@@ -23,6 +23,11 @@ const i18n = {
         'services.grid5.desc': 'Manual crop configuration capability for cases where the camera is not the preferred method.',
         'services.grid6': 'Real-Time Telemetry Dashboard',
         'services.grid6.desc': 'Detailed visualization of the growing environment status and irrigation mode management through a mobile and web application.',
+        'app.mobile': 'Your crops in the palm of your hand',
+        'app.description':'Access Grotix’s AI-powered insights directly on your phone. From automated crop identification to detailed water-saving reports, our app turns complex sensor data into actionable decisions for a better harvest.',
+        'app.download': 'Download on',
+        'us.description':'We are a startup from the Peruvian University of Applied Sciences (UPC) that promotes smart agriculture through Grotix, a scalable IoT platform designed to optimize irrigation through precision sensors and a centralized architecture.',
+        'us.description2':'Through automation and the use of data, we seek to mitigate hunger and promote public health, transforming the management of agricultural resources into an engine of social well-being and national sustainability.',
     },
     // Spanish
     es: {
@@ -47,5 +52,10 @@ const i18n = {
         'services.grid5.desc': 'Capacidad de configuración manual de cultivos para casos donde la cámara no sea el método preferido.',
         'services.grid6': 'Dashboard de Telemetría en Tiempo Real',
         'services.grid6.desc': 'Visualización detallada del estado del ambiente de cultivo y gestión del modo de riego a través de una aplicación móvil y web.',
+        'app.mobile': 'Tus cultivos en la palma de tu mano',
+        'app.description': 'Acceda a la información estratégica de Grotix, basada en inteligencia artificial, directamente en su teléfono. Desde la identificación automatizada de cultivos hasta informes detallados sobre el ahorro de agua, nuestra aplicación transforma datos complejos de sensores en decisiones prácticas para una mejor cosecha.',
+        'app.download': 'Descarga en',
+        'us.description': 'Somos startup de la Universidad Peruana de Ciencias Aplicadas (UPC) que impulsa la agricultura inteligente mediante Grotix, una plataforma IoT escalable diseñada para optimizar el riego a través de sensores de precisión y una arquitectura centralizada.',
+        'us.description2':'Mediante la automatización y el uso de datos, buscamos mitigar la hambruna y promover la salud pública, transformando la gestión de recursos agrícolas en un motor de bienestar social y sostenibilidad nacional.',
     }
 }
