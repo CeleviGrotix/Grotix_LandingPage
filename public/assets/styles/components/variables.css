@@ -1,0 +1,14 @@
+:root {
+    /* Color palette */
+    --color-grassgreen: #4FD16C;
+    --color-ceruleanblue: #40BFE2;
+    --color-coralred: #FF5757;
+    --color-black: #000000;
+    --color-emeraldgreen: #01A070;
+    --color-brightcyan: #57DBFF;
+    --color-lightgray: #DDDDDD;
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-unique: 'Gabarito', sans-serif;
+}
