@@ -363,7 +363,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.app__right p {
+.app__right p,
+.contact__right-info p{
     font-size: 1.2rem;
 }
 .app__buttons {
@@ -523,4 +524,51 @@ body {
     margin: 0 auto;
     padding: 120px 0;
     gap: 40px;
+}
+
+/* Contact Us Section */
+.contact {
+    position: relative;
+    background: var(--color-black);
+    min-height: 95vh;
+    min-width: 100%;
+    overflow: hidden;
+}
+.contact__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 80px;
+    position: relative;
+    z-index: 1;
+}
+.contact .cursor-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    background: radial-gradient(
+            circle,
+            var(--color-emeraldgreen),
+            rgba(1, 160, 112, 0.25),
+            transparent 70%
+    );
+    filter: blur(80px);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+.contact__left {
+    width: 60%;
+    height: 100%;
+}
+.contact__right {
+    width: 40%;
+    height: 100%;
+}
+.contact__right-info h1 {
+    padding: 160px 0 40px;
+    font-size: 4rem;
+    color: var(--color-ceruleanblue);
 }

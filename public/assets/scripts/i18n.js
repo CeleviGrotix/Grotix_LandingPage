@@ -28,6 +28,8 @@ const i18n = {
         'app.download': 'Download on',
         'us.description':'We are a startup from the Peruvian University of Applied Sciences (UPC) that promotes smart agriculture through Grotix, a scalable IoT platform designed to optimize irrigation through precision sensors and a centralized architecture.',
         'us.description2':'Through automation and the use of data, we seek to mitigate hunger and promote public health, transforming the management of agricultural resources into an engine of social well-being and national sustainability.',
+        'contact.title':'Let\'s grow the future together',
+        'contact.description':'Have questions about our IoT sensors or the Grotix platform? Whether you are a solo producer or represent a large association, we’re ready to answer your technical and commercial inquiries.',
     },
     // Spanish
     es: {
@@ -57,5 +59,7 @@ const i18n = {
         'app.download': 'Descarga en',
         'us.description': 'Somos startup de la Universidad Peruana de Ciencias Aplicadas (UPC) que impulsa la agricultura inteligente mediante Grotix, una plataforma IoT escalable diseñada para optimizar el riego a través de sensores de precisión y una arquitectura centralizada.',
         'us.description2':'Mediante la automatización y el uso de datos, buscamos mitigar la hambruna y promover la salud pública, transformando la gestión de recursos agrícolas en un motor de bienestar social y sostenibilidad nacional.',
+        'contact.title':'Sembremos juntos el futuro',
+        'contact.description':'¿Tiene preguntas sobre nuestros sensores IoT o la plataforma Grotix? Sea usted un productor independiente o represente a una gran asociación, estamos listos para responder a sus consultas técnicas y comerciales.',
     }
 }
