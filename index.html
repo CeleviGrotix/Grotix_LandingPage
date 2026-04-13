@@ -31,9 +31,31 @@
     <link rel="stylesheet" href="public/assets/styles/index.css"> <!-- Main CSS -->
 </head>
 <body>
+<!-- HEADER -->
+<header class="header">
+    <div class="grotix__logo">
+        <img src="public/assets/images/logo/logo.png" alt="Grotix Logo">
+    </div>
+    <nav class="header__nav" aria-label="Main Navigation">
+        <ul class="header__nav-list">
+            <li class="header__nav-item"><a href="#hero" class="header__nav-link active" aria-current="page" data-i18n="nav.hero">General</a></li>
+            <li class="header__nav-item"><a href="#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+            <li class="header__nav-item"><a href="#about" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+            <li class="header__nav-item"><a href="#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li class="header__nav-item"><a href="#social" class="header__nav-link" data-i18n="nav.social">Social</a></li>
+        </ul>
+    </nav>
+    <div class="header__language-selector">
+        <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+</header>
 
 
 
+<!-- SCRIPTS -->
+<script src="public/assets/scripts/i18n.js"></script>
+<script src="public/assets/scripts/index.js"></script>
 
 </body>
 </html>
