@@ -1,7 +1,7 @@
 :root {
     /* Color palette */
     --color-grassgreen: #4FD16C;
-    --color-ceruleanblue: #40BFE2;
+    --color-ceruleanblue: rgb(87, 219, 255);
     --color-coralred: #FF5757;
     --color-black: #000000;
     --color-emeraldgreen: #01A070;
