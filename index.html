@@ -44,6 +44,7 @@
             <li class="header__nav-item"><a href="#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
             <li class="header__nav-item"><a href="#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
             <li class="header__nav-item"><a href="#social" class="header__nav-link" data-i18n="nav.social">Social</a></li>
+            <li class="header__nav-item"><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
         </ul>
     </nav>
     <div class="header__language-selector">
@@ -63,7 +64,9 @@
                 </p>
             </div>
             <div class="hero__upper_btn">
-                <a href="" class="btn btn--text" data-i18n="hero.get">GET NOW!</a>
+                <div class="cta">
+                    <a href="" class="btn btn--text" data-i18n="hero.get">GET NOW!</a>
+                </div>
             </div>
         </div>
         <div class="hero__lower">
@@ -157,7 +160,28 @@
     <div class="contact__container">
         <div class="cursor-glow"></div>
         <div class="contact__left">
-            <!--form aki-->
+            <div class="contact__card-stack">
+                <div class="contact__card-bg"></div>
+                <form class="contact__form">
+                    <div class="form__group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form__group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    <div class="form__group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn__send">SEND</button>
+                </form>
+            </div>
         </div>
         <div class="contact__right">
             <div class="contact__right-info">

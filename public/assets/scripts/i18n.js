@@ -41,7 +41,7 @@ const i18n = {
         'nav.social': 'Redes',
         'hero.title': 'Grotix',
         'hero.description': 'Riego de precisión impulsado por IA para una agricultura más inteligente y eficiente en el uso del agua.',
-        'hero.get': '¡OBTENLO AHORA!',
+        'hero.get': '¡COMIENZA AHORA!',
         'services.grid1': 'Monitoreo en tiempo real mediante sensores',
         'services.grid1.desc': 'Sensores de alta precisión para medir temperatura ambiental, humedad relativa, humedad del suelo y niveles de luz solar.',
         'services.grid2': 'Identificación Inteligente de Cultivos',
