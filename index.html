@@ -34,7 +34,7 @@
 <!-- HEADER -->
 <header class="header">
     <div class="grotix__logo">
-        <img src="public/assets/images/logo/logo.png" alt="Grotix Logo">
+        <img src="public/assets/images/logo/b&w.png" alt="Grotix Logo">
     </div>
     <nav class="header__nav" aria-label="Main Navigation">
         <ul class="header__nav-list">
@@ -217,19 +217,19 @@
                 <form class="contact__form">
                     <div class="form__group">
                         <label for="name" data-i18n="contact.name">Name</label>
-                        <input type="text" id="name" name="name">
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form__group">
                         <label for="email" data-i18n="contact.email">Email</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form__group">
                         <label for="subject" data-i18n="contact.subject">Subject</label>
-                        <input type="text" id="subject" name="subject">
+                        <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form__group">
                         <label for="message" data-i18n="contact.message">Message</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
+                        <textarea id="message" name="message" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn__send">SEND</button>
                 </form>
@@ -249,10 +249,10 @@
     <div class="social__container">
         <h2 data-i18n="social.title">Find us everywhere</h2>
         <div class="social__icons">
-            <a href="#" class="social__icon-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social__icon-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social__icon-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social__icon-link"><i class="fab fa-linkedin-in"></i></a>
+            <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll" class="social__icon-link"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136" class="social__icon-link"><i class="fab fa-facebook-f"></i></a>
+            <a target="_blank" href="https://x.com/grotix99540" class="social__icon-link"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/" class="social__icon-link"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </section>
@@ -268,9 +268,10 @@
                 </div>
                 <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
                 <div class="footer__social-min">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll"><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136"><i class="fab fa-facebook"></i></a>
+                    <a target="_blank" href="https://x.com/grotix99540"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
 
@@ -288,10 +289,10 @@
             <div class="footer__col">
                 <h3 data-i18n="footer.legal.title">Legal</h3>
                 <ul class="footer__links">
-                    <li><a href="#" data-i18n="footer.terms">Terms and Conditions</a></li>
-                    <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
-                    <li><a href="#" data-i18n="footer.cookies">Cookies Policy</a></li>
-                    <li><a href="#" data-i18n="footer.complaints">Complaints Book</a></li>
+                    <li><a href="public/terms.html" data-i18n="footer.terms">Terms and Conditions</a></li>
+                    <li><a href="public/terms.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="public/terms.html" data-i18n="footer.cookies">Cookies Policy</a></li>
+                    <li><a href="public/terms.html" data-i18n="footer.complaints">Complaints Book</a></li>
                 </ul>
             </div>
 
@@ -313,6 +314,6 @@
 <!-- SCRIPTS -->
 <script src="public/assets/scripts/i18n.js"></script>
 <script src="public/assets/scripts/index.js"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>

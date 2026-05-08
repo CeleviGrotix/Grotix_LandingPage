@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grotix – Terms & Conditions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/components/variables.css">
+  <link rel="stylesheet" href="assets/styles/index.css"> <!-- Main CSS -->
+  <style>
+    /* LAYOUT */
+    .legal-wrap { display: flex; gap: 0; padding-top: 80px; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .legal-sidebar { width: 280px; flex-shrink: 0; padding: 60px 32px; border-right: 1px solid rgba(255,255,255,0.06); position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .sidebar-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+    .sidebar-back:hover { color: var(--color-coralred); }
+    .sidebar-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav a { display: block; text-decoration: none; font-size: 0.9rem; color: rgba(255,255,255,0.45); padding: 8px 12px; border-radius: 10px; border-left: 2px solid transparent; transition: all 0.2s; }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--color-coralred); border-left-color: var(--color-coralred); background: rgba(255,87,87,0.06); }
+    .legal-links { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .legal-link-item { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.35); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .legal-link-item:hover { color: var(--color-coralred); }
+    .legal-link-item i { font-size: 0.75rem; }
+
+    /* MAIN */
+    .legal-main { flex: 1; padding: 60px 80px 120px 80px; max-width: 80vw; }
+    .doc-meta { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .doc-badge { display: inline-block; background: rgba(255,87,87,0.12); border: 1px solid rgba(255,87,87,0.3); color: var(--color-coralred); border-radius: 40px; padding: 5px 18px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-date { font-size: 0.85rem; color: rgba(255,255,255,0.35); }
+    .doc-title { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(120deg, var(--color-white) 0%, var(--color-coralred) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .doc-intro { font-size: 1.1rem; color: rgba(255,255,255,0.55); margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* SECTIONS */
+    .legal-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+    .section-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-coralred); margin-bottom: 12px; }
+    .legal-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--color-white); }
+    .legal-section p { font-size: 0.98rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+    .legal-section ul { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+    .legal-section ul li { font-size: 0.98rem; color: rgba(255,255,255,0.6); padding-left: 20px; position: relative; }
+    .legal-section ul li::before { content: "→"; position: absolute; left: 0; color: var(--color-coralred); font-size: 0.8rem; top: 2px; }
+    .highlight-box { background: rgba(255,87,87,0.06); border: 1px solid rgba(255,87,87,0.2); border-radius: 14px; padding: 20px 24px; margin: 20px 0; }
+    .highlight-box p { margin: 0; font-size: 0.92rem; }
+
+    /* FOOTER */
+    .contact-strip { background: rgba(255,87,87,0.07); border: 1px solid rgba(255,87,87,0.2); border-radius: 24px; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 60px; }
+    .contact-strip h3 { font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-strip p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+    .btn-solid { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; background: var(--color-coralred); color: #fff; transition: opacity 0.3s; flex-shrink: 0; }
+    .btn-solid:hover { opacity: 0.8; }
+    .color-separator { width: 100%; height: 24px; margin: 10px 0; background-image: radial-gradient(circle at 12px center, var(--color-grassgreen) 0 8px, transparent 9px), radial-gradient(circle at 36px center, var(--color-ceruleanblue) 0 8px, transparent 9px), radial-gradient(circle at 60px center, var(--color-coralred) 0 8px, transparent 9px), radial-gradient(circle at 84px center, var(--color-lightgray) 0 8px, transparent 9px); background-size: 96px 24px; background-repeat: repeat-x; }
+    .footer { background: #080808; padding: 80px 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .footer__col h3 { color: var(--color-ceruleanblue); margin-bottom: 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+    .footer__tagline { margin: 20px 0; font-size: 0.95rem; color: #888; }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 12px; }
+    .footer__links a { text-decoration: none; color: var(--color-lightgray); font-size: 0.9rem; transition: color 0.2s; }
+    .footer__links a:hover { color: var(--color-coralred); }
+    .footer__social-min { display: flex; gap: 15px; font-size: 1.2rem; }
+    .footer__social-min a { color: var(--color-white); }
+    .footer__logo img { height: 4vh; width: auto; min-height: 40px; min-width: 100px; }
+    .footer__bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+    @media (max-width: 1024px) { .legal-sidebar { display: none; } .legal-main { padding: 60px 32px 80px; } .contact-strip { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr 1fr; } .header { padding: 16px 20px; } .header__nav-list { gap: 16px; } }
+  </style>
+</head>
+<body>
+<header class="header">
+  <div class="grotix__logo"><a href="index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
+  <nav class="header__nav">
+    <ul class="header__nav-list">
+      <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+      <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+      <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+      <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+      <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+    </ul>
+  </nav>
+  <div class="header__language-selector">
+    <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+    <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+  </div>
+</header>
+
+<div class="legal-wrap">
+  <!-- SIDEBAR -->
+  <aside class="legal-sidebar">
+    <a href="index.html" class="sidebar-back"><i class="fas fa-arrow-left"></i> <span data-i18n="legal.back">Back to site</span></a>
+    <p class="sidebar-label" data-i18n="legal.toc">On this page</p>
+    <ul class="sidebar-nav">
+      <li><a href="#acceptance" data-i18n="terms.s1.title">Acceptance</a></li>
+      <li><a href="#service" data-i18n="terms.s2.title">Service Description</a></li>
+      <li><a href="#account" data-i18n="terms.s3.title">User Account</a></li>
+      <li><a href="#hardware" data-i18n="terms.s4.title">Hardware Use</a></li>
+      <li><a href="#ip" data-i18n="terms.s5.title">Intellectual Property</a></li>
+      <li><a href="#liability" data-i18n="terms.s6.title">Liability</a></li>
+      <li><a href="#termination" data-i18n="terms.s7.title">Termination</a></li>
+      <li><a href="#changes" data-i18n="terms.s8.title">Changes</a></li>
+      <li><a href="#law" data-i18n="terms.s9.title">Governing Law</a></li>
+    </ul>
+    <div class="legal-links">
+      <a href="privacy.html" class="legal-link-item"><i class="fas fa-shield-alt"></i> <span data-i18n="footer.privacy">Privacy Policy</span></a>
+      <a href="cookies.html" class="legal-link-item"><i class="fas fa-cookie-bite"></i> <span data-i18n="footer.cookies">Cookies Policy</span></a>
+      <a href="complaints.html" class="legal-link-item"><i class="fas fa-book"></i> <span data-i18n="footer.complaints">Complaints Book</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="legal-main">
+    <div class="doc-meta">
+      <span class="doc-badge" data-i18n="footer.terms">Terms and Conditions</span>
+      <span class="doc-date" data-i18n="legal.updated">Last updated: January 1, 2026</span>
+    </div>
+    <h1 class="doc-title" data-i18n="terms.title">Terms and Conditions of Use</h1>
+    <p class="doc-intro" data-i18n="terms.intro">By accessing or using Grotix — the AI-driven precision irrigation platform developed by Celevi — you agree to be bound by the following terms. Please read them carefully before using our hardware, mobile application or web services.</p>
+
+    <div class="legal-section" id="acceptance">
+      <p class="section-num">01</p>
+      <h2 data-i18n="terms.s1.title">Acceptance of Terms</h2>
+      <p data-i18n="terms.s1.p1">These Terms and Conditions govern the relationship between Celevi S.A.C. ("Grotix", "we", "us") and any individual or legal entity ("User") who accesses or uses the Grotix platform, including its IoT hardware, mobile application, web dashboard, and any associated services.</p>
+      <p data-i18n="terms.s1.p2">By completing the registration process, activating a hardware device, or otherwise using our services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately.</p>
+      <div class="highlight-box">
+        <p data-i18n="terms.s1.note">Users must be at least 18 years old or have legal authorization to enter into contracts in their jurisdiction. Use of the platform on behalf of an organization constitutes acceptance by that organization.</p>
+      </div>
+    </div>
+
+    <div class="legal-section" id="service">
+      <p class="section-num">02</p>
+      <h2 data-i18n="terms.s2.title">Description of Service</h2>
+      <p data-i18n="terms.s2.p1">Grotix provides an integrated agricultural intelligence platform comprising:</p>
+      <ul>
+        <li data-i18n="terms.s2.l1">IoT sensor hardware that measures soil moisture, ambient temperature, relative humidity, and sunlight levels.</li>
+        <li data-i18n="terms.s2.l2">A machine-vision module for automated crop identification and phenological stage classification.</li>
+        <li data-i18n="terms.s2.l3">An adaptive automatic irrigation system driven by sensor data and AI models.</li>
+        <li data-i18n="terms.s2.l4">A real-time telemetry dashboard accessible via mobile and web application.</li>
+        <li data-i18n="terms.s2.l5">Manual and remote irrigation controls, water-saving reports, and push notification alerts.</li>
+      </ul>
+      <p data-i18n="terms.s2.p2">Service availability may vary by region. Certain advanced analytics features require an active subscription plan. Grotix reserves the right to modify or discontinue features with reasonable notice.</p>
+    </div>
+
+    <div class="legal-section" id="account">
+      <p class="section-num">03</p>
+      <h2 data-i18n="terms.s3.title">User Account and Responsibilities</h2>
+      <p data-i18n="terms.s3.p1">To access the platform you must register a personal account. You agree to provide accurate, complete information and to keep your credentials confidential. You are solely responsible for all activity that occurs under your account.</p>
+      <ul>
+        <li data-i18n="terms.s3.l1">Notify Grotix immediately of any unauthorized access or security breach.</li>
+        <li data-i18n="terms.s3.l2">Do not share your login credentials with third parties.</li>
+        <li data-i18n="terms.s3.l3">Do not attempt to reverse-engineer, scrape, or interfere with the platform's infrastructure.</li>
+        <li data-i18n="terms.s3.l4">Use the platform only for lawful agricultural management purposes.</li>
+      </ul>
+      <p data-i18n="terms.s3.p2">Grotix implements JWT-based authentication and role-based access control (RBAC) to protect your data. However, the security of your device and password remains your responsibility.</p>
+    </div>
+
+    <div class="legal-section" id="hardware">
+      <p class="section-num">04</p>
+      <h2 data-i18n="terms.s4.title">Hardware Use and Warranty</h2>
+      <p data-i18n="terms.s4.p1">The Grotix sensor kit is sold as physical hardware. Upon purchase, Celevi grants you a non-exclusive, non-transferable license to use the hardware in conjunction with the Grotix platform.</p>
+      <ul>
+        <li data-i18n="terms.s4.l1">Hardware carries a 30-day satisfaction guarantee against manufacturing defects.</li>
+        <li data-i18n="terms.s4.l2">Modifications, tampering, or use of the hardware outside the documented specifications voids the warranty.</li>
+        <li data-i18n="terms.s4.l3">The device is rated IP65 and is suitable for outdoor use under normal agricultural conditions.</li>
+        <li data-i18n="terms.s4.l4">Connectivity is required for cloud synchronization; on-device logic continues autonomously during brief outages.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="ip">
+      <p class="section-num">05</p>
+      <h2 data-i18n="terms.s5.title">Intellectual Property</h2>
+      <p data-i18n="terms.s5.p1">All software, algorithms, AI models, brand assets, and documentation associated with Grotix are the exclusive intellectual property of Celevi S.A.C. and are protected under applicable Peruvian and international intellectual property law.</p>
+      <p data-i18n="terms.s5.p2">The User retains ownership of all agricultural data generated by their own devices and crops. Grotix may use anonymized, aggregated data to improve its AI models and service quality, as described in our Privacy Policy.</p>
+    </div>
+
+    <div class="legal-section" id="liability">
+      <p class="section-num">06</p>
+      <h2 data-i18n="terms.s6.title">Limitation of Liability</h2>
+      <p data-i18n="terms.s6.p1">Grotix provides its services on an "as-is" and "as-available" basis. While we strive for 99.9% uptime, we do not guarantee uninterrupted service and are not liable for damages resulting from connectivity failures, network outages, or force majeure events.</p>
+      <div class="highlight-box">
+        <p data-i18n="terms.s6.note">Grotix is a precision-assistance tool and does not replace professional agronomic advice. Crop outcomes depend on many factors beyond the platform's control. Celevi shall not be liable for crop losses, yield reductions, or economic damages arising from reliance on platform recommendations.</p>
+      </div>
+    </div>
+
+    <div class="legal-section" id="termination">
+      <p class="section-num">07</p>
+      <h2 data-i18n="terms.s7.title">Termination</h2>
+      <p data-i18n="terms.s7.p1">Either party may terminate the service relationship at any time. Users may close their account from the account settings panel. Upon closure, personal data will be handled in accordance with our Privacy Policy and applicable data protection law.</p>
+      <p data-i18n="terms.s7.p2">Grotix may suspend or terminate an account immediately if we detect violations of these Terms, fraudulent activity, or conduct that endangers the platform's infrastructure or other users.</p>
+    </div>
+
+    <div class="legal-section" id="changes">
+      <p class="section-num">08</p>
+      <h2 data-i18n="terms.s8.title">Changes to Terms</h2>
+      <p data-i18n="terms.s8.p1">Grotix reserves the right to update these Terms at any time. Material changes will be communicated via email or in-app notification at least 15 days before taking effect. Continued use of the platform after the effective date constitutes acceptance of the updated Terms.</p>
+    </div>
+
+    <div class="legal-section" id="law">
+      <p class="section-num">09</p>
+      <h2 data-i18n="terms.s9.title">Governing Law and Jurisdiction</h2>
+      <p data-i18n="terms.s9.p1">These Terms are governed by the laws of Peru. Any disputes arising from the use of the Grotix platform shall be submitted to the competent courts of Lima, Peru. Users agree to waive any right to trial by jury and to resolve disputes through the applicable legal mechanisms available in Peru.</p>
+    </div>
+
+    <div class="contact-strip">
+      <div>
+        <h3 data-i18n="legal.contact.title">Questions about these terms?</h3>
+        <p data-i18n="legal.contact.desc">Our team is ready to clarify any legal inquiry.</p>
+      </div>
+      <a href="index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+    </div>
+  </main>
+</div>
+
+<div class="color-separator"></div>
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__logo"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></div>
+        <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+        <div class="footer__social-min">
+          <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll"><i class="fab fa-instagram"></i></a>
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136"><i class="fab fa-facebook"></i></a>
+          <a target="_blank" href="https://x.com/grotix99540"><i class="fab fa-twitter"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.nav.title">Navigation</h3>
+        <ul class="footer__links">
+          <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+          <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+          <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.legal.title">Legal</h3>
+        <ul class="footer__links">
+          <li><a href="terms.html" data-i18n="footer.terms">Terms and Conditions</a></li>
+          <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="cookies.html" data-i18n="footer.cookies">Cookies Policy</a></li>
+          <li><a href="complaints.html" data-i18n="footer.complaints">Complaints Book</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.support.title">Support</h3>
+        <ul class="footer__links">
+          <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+          <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom"><p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script>
+  const i18n = {
+    en: {
+      "nav.hero":"General","nav.services":"Services","nav.app":"App","nav.about":"Us","nav.contact":"Contact","hero.get":"GET NOW!",
+      "footer.tagline":"AI-Driven Precision Irrigation for Smarter Farming.","footer.nav.title":"Navigation","footer.legal.title":"Legal","footer.support.title":"Support",
+      "footer.terms":"Terms and Conditions","footer.privacy":"Privacy Policy","footer.cookies":"Cookies Policy","footer.complaints":"Complaints Book",
+      "footer.help":"Help","footer.faq":"Frequent Questions","footer.chvr":"© 2026 Grotix - Celevi. All rights reserved.",
+      "legal.back":"Back to site","legal.toc":"On this page","legal.updated":"Last updated: January 1, 2026","legal.contact.title":"Questions about these terms?","legal.contact.desc":"Our team is ready to clarify any legal inquiry.",
+      "terms.title":"Terms and Conditions of Use",
+      "terms.intro":"By accessing or using Grotix — the AI-driven precision irrigation platform developed by Celevi — you agree to be bound by the following terms. Please read them carefully before using our hardware, mobile application or web services.",
+      "terms.s1.title":"Acceptance of Terms","terms.s1.p1":"These Terms and Conditions govern the relationship between Celevi S.A.C. ("Grotix", "we", "us") and any individual or legal entity ("User") who accesses or uses the Grotix platform, including its IoT hardware, mobile application, web dashboard, and any associated services.","terms.s1.p2":"By completing the registration process, activating a hardware device, or otherwise using our services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately.","terms.s1.note":"Users must be at least 18 years old or have legal authorization to enter into contracts in their jurisdiction. Use of the platform on behalf of an organization constitutes acceptance by that organization.",
+      "terms.s2.title":"Description of Service","terms.s2.p1":"Grotix provides an integrated agricultural intelligence platform comprising:","terms.s2.l1":"IoT sensor hardware that measures soil moisture, ambient temperature, relative humidity, and sunlight levels.","terms.s2.l2":"A machine-vision module for automated crop identification and phenological stage classification.","terms.s2.l3":"An adaptive automatic irrigation system driven by sensor data and AI models.","terms.s2.l4":"A real-time telemetry dashboard accessible via mobile and web application.","terms.s2.l5":"Manual and remote irrigation controls, water-saving reports, and push notification alerts.","terms.s2.p2":"Service availability may vary by region. Certain advanced analytics features require an active subscription plan. Grotix reserves the right to modify or discontinue features with reasonable notice.",
+      "terms.s3.title":"User Account and Responsibilities","terms.s3.p1":"To access the platform you must register a personal account. You agree to provide accurate, complete information and to keep your credentials confidential. You are solely responsible for all activity that occurs under your account.","terms.s3.l1":"Notify Grotix immediately of any unauthorized access or security breach.","terms.s3.l2":"Do not share your login credentials with third parties.","terms.s3.l3":"Do not attempt to reverse-engineer, scrape, or interfere with the platform's infrastructure.","terms.s3.l4":"Use the platform only for lawful agricultural management purposes.","terms.s3.p2":"Grotix implements JWT-based authentication and role-based access control (RBAC) to protect your data. However, the security of your device and password remains your responsibility.",
+      "terms.s4.title":"Hardware Use and Warranty","terms.s4.p1":"The Grotix sensor kit is sold as physical hardware. Upon purchase, Celevi grants you a non-exclusive, non-transferable license to use the hardware in conjunction with the Grotix platform.","terms.s4.l1":"Hardware carries a 30-day satisfaction guarantee against manufacturing defects.","terms.s4.l2":"Modifications, tampering, or use of the hardware outside the documented specifications voids the warranty.","terms.s4.l3":"The device is rated IP65 and is suitable for outdoor use under normal agricultural conditions.","terms.s4.l4":"Connectivity is required for cloud synchronization; on-device logic continues autonomously during brief outages.",
+      "terms.s5.title":"Intellectual Property","terms.s5.p1":"All software, algorithms, AI models, brand assets, and documentation associated with Grotix are the exclusive intellectual property of Celevi S.A.C. and are protected under applicable Peruvian and international intellectual property law.","terms.s5.p2":"The User retains ownership of all agricultural data generated by their own devices and crops. Grotix may use anonymized, aggregated data to improve its AI models and service quality, as described in our Privacy Policy.",
+      "terms.s6.title":"Limitation of Liability","terms.s6.p1":"Grotix provides its services on an "as-is" and "as-available" basis. While we strive for 99.9% uptime, we do not guarantee uninterrupted service and are not liable for damages resulting from connectivity failures, network outages, or force majeure events.","terms.s6.note":"Grotix is a precision-assistance tool and does not replace professional agronomic advice. Crop outcomes depend on many factors beyond the platform's control. Celevi shall not be liable for crop losses, yield reductions, or economic damages arising from reliance on platform recommendations.",
+      "terms.s7.title":"Termination","terms.s7.p1":"Either party may terminate the service relationship at any time. Users may close their account from the account settings panel. Upon closure, personal data will be handled in accordance with our Privacy Policy and applicable data protection law.","terms.s7.p2":"Grotix may suspend or terminate an account immediately if we detect violations of these Terms, fraudulent activity, or conduct that endangers the platform's infrastructure or other users.",
+      "terms.s8.title":"Changes to Terms","terms.s8.p1":"Grotix reserves the right to update these Terms at any time. Material changes will be communicated via email or in-app notification at least 15 days before taking effect. Continued use of the platform after the effective date constitutes acceptance of the updated Terms.",
+      "terms.s9.title":"Governing Law and Jurisdiction","terms.s9.p1":"These Terms are governed by the laws of Peru. Any disputes arising from the use of the Grotix platform shall be submitted to the competent courts of Lima, Peru. Users agree to waive any right to trial by jury and to resolve disputes through the applicable legal mechanisms available in Peru."
+    },
+    es: {
+      "nav.hero":"General","nav.services":"Servicios","nav.app":"App","nav.about":"Nosotros","nav.contact":"Contacto","hero.get":"¡OBTENER AHORA!",
+      "footer.tagline":"Irrigación de precisión con IA para una agricultura inteligente.","footer.nav.title":"Navegación","footer.legal.title":"Legal","footer.support.title":"Soporte",
+      "footer.terms":"Términos y Condiciones","footer.privacy":"Política de Privacidad","footer.cookies":"Política de Cookies","footer.complaints":"Libro de Reclamaciones",
+      "footer.help":"Ayuda","footer.faq":"Preguntas Frecuentes","footer.chvr":"© 2026 Grotix - Celevi. Todos los derechos reservados.",
+      "legal.back":"Volver al sitio","legal.toc":"En esta página","legal.updated":"Última actualización: 1 de enero de 2026","legal.contact.title":"¿Preguntas sobre estos términos?","legal.contact.desc":"Nuestro equipo está listo para resolver cualquier consulta legal.",
+      "terms.title":"Términos y Condiciones de Uso",
+      "terms.intro":"Al acceder o usar Grotix — la plataforma de irrigación de precisión con IA desarrollada por Celevi — aceptas quedar vinculado por los siguientes términos. Léelos detenidamente antes de usar nuestro hardware, aplicación móvil o servicios web.",
+      "terms.s1.title":"Aceptación de Términos","terms.s1.p1":"Estos Términos y Condiciones rigen la relación entre Celevi S.A.C. («Grotix», «nosotros») y cualquier persona natural o jurídica («Usuario») que acceda o use la plataforma Grotix, incluyendo su hardware IoT, aplicación móvil, panel web y cualquier servicio asociado.","terms.s1.p2":"Al completar el proceso de registro, activar un dispositivo de hardware o usar nuestros servicios de cualquier otra forma, confirmas que has leído, comprendido y aceptas quedar vinculado por estos Términos. Si no estás de acuerdo, debes dejar de usar la plataforma de inmediato.","terms.s1.note":"Los usuarios deben tener al menos 18 años o contar con autorización legal para celebrar contratos en su jurisdicción. El uso de la plataforma en nombre de una organización constituye la aceptación de estos Términos por parte de dicha organización.",
+      "terms.s2.title":"Descripción del Servicio","terms.s2.p1":"Grotix ofrece una plataforma integrada de inteligencia agrícola que comprende:","terms.s2.l1":"Hardware de sensores IoT que mide la humedad del suelo, temperatura ambiental, humedad relativa y niveles de luz solar.","terms.s2.l2":"Un módulo de visión por máquina para la identificación automática de cultivos y clasificación de etapas fenológicas.","terms.s2.l3":"Un sistema de irrigación automático adaptativo impulsado por datos de sensores y modelos de IA.","terms.s2.l4":"Un panel de telemetría en tiempo real accesible desde la aplicación móvil y web.","terms.s2.l5":"Controles de irrigación manual y remota, informes de ahorro de agua y alertas por notificación push.","terms.s2.p2":"La disponibilidad del servicio puede variar según la región. Ciertas funciones de analítica avanzada requieren un plan de suscripción activo. Grotix se reserva el derecho de modificar o discontinuar funciones con previo aviso razonable.",
+      "terms.s3.title":"Cuenta de Usuario y Responsabilidades","terms.s3.p1":"Para acceder a la plataforma debes registrar una cuenta personal. Aceptas proporcionar información precisa y completa, y mantener la confidencialidad de tus credenciales. Eres el único responsable de toda la actividad que ocurra en tu cuenta.","terms.s3.l1":"Notifica a Grotix de inmediato ante cualquier acceso no autorizado o brecha de seguridad.","terms.s3.l2":"No compartas tus credenciales de acceso con terceros.","terms.s3.l3":"No intentes realizar ingeniería inversa, extraer datos de forma masiva ni interferir con la infraestructura de la plataforma.","terms.s3.l4":"Utiliza la plataforma únicamente para fines lícitos de gestión agrícola.","terms.s3.p2":"Grotix implementa autenticación basada en JWT y control de acceso por roles (RBAC) para proteger tus datos. Sin embargo, la seguridad de tu dispositivo y contraseña es tu responsabilidad.",
+      "terms.s4.title":"Uso del Hardware y Garantía","terms.s4.p1":"El kit de sensores Grotix se vende como hardware físico. Al adquirirlo, Celevi te otorga una licencia no exclusiva e intransferible para usar el hardware en conjunto con la plataforma Grotix.","terms.s4.l1":"El hardware cuenta con una garantía de satisfacción de 30 días contra defectos de fabricación.","terms.s4.l2":"Las modificaciones, manipulaciones indebidas o el uso del hardware fuera de las especificaciones documentadas anulan la garantía.","terms.s4.l3":"El dispositivo tiene clasificación IP65 y es apto para uso al aire libre en condiciones agrícolas normales.","terms.s4.l4":"La conectividad es necesaria para la sincronización con la nube; la lógica del dispositivo continúa de forma autónoma durante breves cortes.",
+      "terms.s5.title":"Propiedad Intelectual","terms.s5.p1":"Todo el software, algoritmos, modelos de IA, activos de marca y documentación asociados a Grotix son propiedad intelectual exclusiva de Celevi S.A.C. y están protegidos por la legislación peruana e internacional aplicable.","terms.s5.p2":"El Usuario conserva la propiedad de todos los datos agrícolas generados por sus propios dispositivos y cultivos. Grotix puede utilizar datos anonimizados y agregados para mejorar sus modelos de IA y la calidad del servicio, según se describe en nuestra Política de Privacidad.",
+      "terms.s6.title":"Limitación de Responsabilidad","terms.s6.p1":"Grotix presta sus servicios «tal como están» y «según disponibilidad». Si bien aspiramos a un tiempo de actividad del 99,9%, no garantizamos un servicio ininterrumpido y no somos responsables de los daños derivados de fallos de conectividad, interrupciones de red o casos de fuerza mayor.","terms.s6.note":"Grotix es una herramienta de asistencia de precisión y no reemplaza el asesoramiento agronómico profesional. Los resultados de los cultivos dependen de muchos factores fuera del control de la plataforma. Celevi no será responsable de pérdidas de cultivos, reducciones de rendimiento o daños económicos derivados del uso de las recomendaciones de la plataforma.",
+      "terms.s7.title":"Terminación","terms.s7.p1":"Cualquiera de las partes puede terminar la relación de servicio en cualquier momento. Los usuarios pueden cerrar su cuenta desde el panel de configuración. Tras el cierre, los datos personales se gestionarán de acuerdo con nuestra Política de Privacidad y la legislación de protección de datos aplicable.","terms.s7.p2":"Grotix puede suspender o cancelar una cuenta de inmediato si detecta incumplimientos de estos Términos, actividad fraudulenta o conducta que ponga en riesgo la infraestructura de la plataforma u otros usuarios.",
+      "terms.s8.title":"Cambios en los Términos","terms.s8.p1":"Grotix se reserva el derecho de actualizar estos Términos en cualquier momento. Los cambios sustanciales se comunicarán por correo electrónico o notificación en la aplicación con al menos 15 días de antelación. El uso continuado de la plataforma tras la fecha de entrada en vigor implica la aceptación de los Términos actualizados.",
+      "terms.s9.title":"Ley Aplicable y Jurisdicción","terms.s9.p1":"Estos Términos se rigen por las leyes de Perú. Cualquier disputa derivada del uso de la plataforma Grotix se someterá a los tribunales competentes de Lima, Perú. Los usuarios aceptan resolver las disputas a través de los mecanismos legales aplicables en Perú."
+    }
+  };
+  let currentLanguage = 'en';
+  const translatePage = (lang) => {
+    document.querySelectorAll('.language-btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'));
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (i18n[lang]?.[k]) el.textContent = i18n[lang][k]; });
+    localStorage.setItem('grotix-language', lang); currentLanguage = lang;
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('grotix-language');
+    translatePage(saved || (navigator.language.startsWith('es') ? 'es' : 'en'));
+    document.querySelectorAll('.language-btn').forEach(b => b.addEventListener('click', () => translatePage(b.dataset.lang)));
+    // Sidebar active
+    const sections = document.querySelectorAll('.legal-section');
+    const links = document.querySelectorAll('.sidebar-nav a');
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) { links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id)); }}); }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => obs.observe(s));
+  });
+</script>
+</body>
+</html>

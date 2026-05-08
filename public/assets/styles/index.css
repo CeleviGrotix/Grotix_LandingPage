@@ -695,7 +695,7 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 80px;
-    padding: 100px;
+    padding: 160px 100px 80px;
     position: relative;
     z-index: 1;
 }
