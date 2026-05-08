@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
 
-            if (link.getAttribute('href').startsWith('#')) {
+            if (link.getAttribute('href').startsWith('index.html#')) {
                 e.preventDefault();
                 const targetId = link.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -64,6 +64,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.header__nav-link');
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+
+                    const href = link.getAttribute('href');
+                    const targetId = href.includes('#') ? href.split('#')[1] : null;
+
+                    if (targetId === entry.target.id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(section => observer.observe(section));
 });
 
 //CURSOR FOLLOWING
