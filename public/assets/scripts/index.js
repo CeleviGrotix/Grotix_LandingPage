@@ -80,6 +80,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- HAMBURGER MENU ---
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.querySelector('.header__nav');
+
+    // Crea el overlay dinámicamente
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+
+    const openMenu = () => {
+        hamburger.classList.add('open');
+        nav.classList.add('open');
+        overlay.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+        hamburger.classList.remove('open');
+        nav.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // Cierra al hacer click en overlay
+    overlay.addEventListener('click', closeMenu);
+
+    // Cierra al hacer click en un link del nav
+    document.querySelectorAll('.header__nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Cierra al presionar Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
     // --- ACTIVE NAV LINK (OBSERVER) ---
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.header__nav-link');

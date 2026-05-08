@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles/components/variables.css">
+  <link rel="stylesheet" href="assets/styles/components/header.css">
   <link rel="stylesheet" href="assets/styles/index.css"> <!-- Main CSS -->
   <style>
     /* LAYOUT */
@@ -74,7 +75,7 @@
 </head>
 <body>
 <header class="header">
-  <div class="grotix__logo"><a href="index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
+  <div class="grotix__logo"><a href="../index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
   <nav class="header__nav">
     <ul class="header__nav-list">
       <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
@@ -89,6 +90,12 @@
     <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
     <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
   </div>
+  <!-- HAMBURGER -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
 
 <div class="legal-wrap">
@@ -263,6 +270,7 @@
   </div>
 </footer>
 
+<script src="assets/scripts/index.js"></script>
 <script>
   const i18n = {
     en: {
@@ -273,12 +281,12 @@
       "legal.back":"Back to site","legal.toc":"On this page","legal.updated":"Last updated: January 1, 2026","legal.contact.title":"Questions about these terms?","legal.contact.desc":"Our team is ready to clarify any legal inquiry.",
       "terms.title":"Terms and Conditions of Use",
       "terms.intro":"By accessing or using Grotix — the AI-driven precision irrigation platform developed by Celevi — you agree to be bound by the following terms. Please read them carefully before using our hardware, mobile application or web services.",
-      "terms.s1.title":"Acceptance of Terms","terms.s1.p1":"These Terms and Conditions govern the relationship between Celevi S.A.C. ("Grotix", "we", "us") and any individual or legal entity ("User") who accesses or uses the Grotix platform, including its IoT hardware, mobile application, web dashboard, and any associated services.","terms.s1.p2":"By completing the registration process, activating a hardware device, or otherwise using our services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately.","terms.s1.note":"Users must be at least 18 years old or have legal authorization to enter into contracts in their jurisdiction. Use of the platform on behalf of an organization constitutes acceptance by that organization.",
+      "terms.s1.title":"Acceptance of Terms","terms.s1.p1":"These Terms and Conditions govern the relationship between Celevi S.A.C. (\"Grotix\", \"we\", \"us\") and any individual or legal entity (\"User\") who accesses or uses the Grotix platform, including its IoT hardware, mobile application, web dashboard, and any associated services.","terms.s1.p2":"By completing the registration process, activating a hardware device, or otherwise using our services, you confirm that you have read, understood, and agree to be bound by these Terms. If you do not agree, you must discontinue use immediately.","terms.s1.note":"Users must be at least 18 years old or have legal authorization to enter into contracts in their jurisdiction. Use of the platform on behalf of an organization constitutes acceptance by that organization.",
       "terms.s2.title":"Description of Service","terms.s2.p1":"Grotix provides an integrated agricultural intelligence platform comprising:","terms.s2.l1":"IoT sensor hardware that measures soil moisture, ambient temperature, relative humidity, and sunlight levels.","terms.s2.l2":"A machine-vision module for automated crop identification and phenological stage classification.","terms.s2.l3":"An adaptive automatic irrigation system driven by sensor data and AI models.","terms.s2.l4":"A real-time telemetry dashboard accessible via mobile and web application.","terms.s2.l5":"Manual and remote irrigation controls, water-saving reports, and push notification alerts.","terms.s2.p2":"Service availability may vary by region. Certain advanced analytics features require an active subscription plan. Grotix reserves the right to modify or discontinue features with reasonable notice.",
       "terms.s3.title":"User Account and Responsibilities","terms.s3.p1":"To access the platform you must register a personal account. You agree to provide accurate, complete information and to keep your credentials confidential. You are solely responsible for all activity that occurs under your account.","terms.s3.l1":"Notify Grotix immediately of any unauthorized access or security breach.","terms.s3.l2":"Do not share your login credentials with third parties.","terms.s3.l3":"Do not attempt to reverse-engineer, scrape, or interfere with the platform's infrastructure.","terms.s3.l4":"Use the platform only for lawful agricultural management purposes.","terms.s3.p2":"Grotix implements JWT-based authentication and role-based access control (RBAC) to protect your data. However, the security of your device and password remains your responsibility.",
       "terms.s4.title":"Hardware Use and Warranty","terms.s4.p1":"The Grotix sensor kit is sold as physical hardware. Upon purchase, Celevi grants you a non-exclusive, non-transferable license to use the hardware in conjunction with the Grotix platform.","terms.s4.l1":"Hardware carries a 30-day satisfaction guarantee against manufacturing defects.","terms.s4.l2":"Modifications, tampering, or use of the hardware outside the documented specifications voids the warranty.","terms.s4.l3":"The device is rated IP65 and is suitable for outdoor use under normal agricultural conditions.","terms.s4.l4":"Connectivity is required for cloud synchronization; on-device logic continues autonomously during brief outages.",
       "terms.s5.title":"Intellectual Property","terms.s5.p1":"All software, algorithms, AI models, brand assets, and documentation associated with Grotix are the exclusive intellectual property of Celevi S.A.C. and are protected under applicable Peruvian and international intellectual property law.","terms.s5.p2":"The User retains ownership of all agricultural data generated by their own devices and crops. Grotix may use anonymized, aggregated data to improve its AI models and service quality, as described in our Privacy Policy.",
-      "terms.s6.title":"Limitation of Liability","terms.s6.p1":"Grotix provides its services on an "as-is" and "as-available" basis. While we strive for 99.9% uptime, we do not guarantee uninterrupted service and are not liable for damages resulting from connectivity failures, network outages, or force majeure events.","terms.s6.note":"Grotix is a precision-assistance tool and does not replace professional agronomic advice. Crop outcomes depend on many factors beyond the platform's control. Celevi shall not be liable for crop losses, yield reductions, or economic damages arising from reliance on platform recommendations.",
+      "terms.s6.title":"Limitation of Liability","terms.s6.p1":"Grotix provides its services on an \"as-is\" and \"as-available\" basis. While we strive for 99.9% uptime, we do not guarantee uninterrupted service and are not liable for damages resulting from connectivity failures, network outages, or force majeure events.","terms.s6.note":"Grotix is a precision-assistance tool and does not replace professional agronomic advice. Crop outcomes depend on many factors beyond the platform's control. Celevi shall not be liable for crop losses, yield reductions, or economic damages arising from reliance on platform recommendations.",
       "terms.s7.title":"Termination","terms.s7.p1":"Either party may terminate the service relationship at any time. Users may close their account from the account settings panel. Upon closure, personal data will be handled in accordance with our Privacy Policy and applicable data protection law.","terms.s7.p2":"Grotix may suspend or terminate an account immediately if we detect violations of these Terms, fraudulent activity, or conduct that endangers the platform's infrastructure or other users.",
       "terms.s8.title":"Changes to Terms","terms.s8.p1":"Grotix reserves the right to update these Terms at any time. Material changes will be communicated via email or in-app notification at least 15 days before taking effect. Continued use of the platform after the effective date constitutes acceptance of the updated Terms.",
       "terms.s9.title":"Governing Law and Jurisdiction","terms.s9.p1":"These Terms are governed by the laws of Peru. Any disputes arising from the use of the Grotix platform shall be submitted to the competent courts of Lima, Peru. Users agree to waive any right to trial by jury and to resolve disputes through the applicable legal mechanisms available in Peru."
