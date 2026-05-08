@@ -119,61 +119,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- EMAILJS INTEGRATION WITH VALIDATION ---
-    // Inicializa con tu Public Key
     if (typeof emailjs !== 'undefined') {
         emailjs.init("jQdfs7rmrZ5zzAZTr");
     }
 
-    const contactForm = document.querySelector('.contact__form');
+    const contactForm = document.getElementById('contactForm');
+    const contactSendBtn = document.getElementById('contactSendBtn');
+    const contactStatus = document.getElementById('contactStatus');
+
+    const showContactStatus = (type, msg) => {
+        contactStatus.className = 'form-status ' + type;
+        contactStatus.innerHTML = type === 'success'
+            ? `<i class="fas fa-check-circle"></i> ${msg}`
+            : `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+        contactStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
 
     if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Captura de datos
-            const formData = new FormData(this);
-            const name = formData.get('name').trim();
-            const email = formData.get('email').trim();
-            const subject = formData.get('subject').trim();
-            const message = formData.get('message').trim();
-
-            // Regex de validación de email
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const t = (typeof i18n !== 'undefined') ? i18n[currentLanguage] : {};
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            // Validaciones de negocio
+            const name    = contactForm.name.value.trim();
+            const email   = contactForm.email.value.trim();
+            const subject = contactForm.subject.value.trim();
+            const message = contactForm.message.value.trim();
+
             if (!name || !email || !subject || !message) {
-                const msg = currentLanguage === 'es' ? 'Completa todos los campos.' : 'Please fill all fields.';
-                alert(msg);
+                showContactStatus('error', t['contact.form.validation.required'] || 'Please fill in all required fields.');
                 return;
             }
-
             if (!emailRegex.test(email)) {
-                const msg = currentLanguage === 'es' ? 'Email no válido.' : 'Invalid email address.';
-                alert(msg);
+                showContactStatus('error', t['contact.form.validation.email'] || 'Please enter a valid email address.');
                 return;
             }
 
-            // UI Feedback
-            const btn = contactForm.querySelector('.btn__send');
-            const originalText = btn.textContent;
-            btn.textContent = currentLanguage === 'es' ? 'ENVIANDO...' : 'SENDING...';
-            btn.disabled = true;
+            const originalText = contactSendBtn.textContent;
+            contactSendBtn.textContent = t['contact.form.sending'] || 'SENDING...';
+            contactSendBtn.disabled = true;
+            contactStatus.className = 'form-status';
 
-            const serviceID = 'service_57il3l9';
-            const templateID = 'template_dbrc03v';
-
-            emailjs.sendForm(serviceID, templateID, this)
+            emailjs.sendForm('service_57il3l9', 'template_dbrc03v', contactForm)
                 .then(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    const success = currentLanguage === 'es' ? '¡Enviado con éxito!' : 'Sent successfully!';
-                    alert(success);
+                    contactSendBtn.textContent = originalText;
+                    contactSendBtn.disabled = false;
+                    showContactStatus('success', t['contact.form.success'] || 'Message sent!');
                     contactForm.reset();
                 }, (err) => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    const error = currentLanguage === 'es' ? 'Error al enviar.' : 'Error sending.';
-                    alert(error + " " + JSON.stringify(err));
+                    contactSendBtn.textContent = originalText;
+                    contactSendBtn.disabled = false;
+                    showContactStatus('error', (t['contact.form.error'] || 'Error sending.') + ' (' + JSON.stringify(err) + ')');
                 });
         });
     }

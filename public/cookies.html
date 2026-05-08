@@ -2,9 +2,444 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Grotix – Cookies Policy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/components/variables.css">
+    <link rel="stylesheet" href="assets/styles/index.css">
+    <style>
+        /* LAYOUT */
+        .legal-wrap { display: flex; gap: 0; padding-top: 80px; min-height: 100vh; }
+
+        /* SIDEBAR */
+        .legal-sidebar { width: 280px; flex-shrink: 0; padding: 60px 32px; border-right: 1px solid rgba(255,255,255,0.06); position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+        .sidebar-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+        .sidebar-back:hover { color: var(--color-grassgreen); }
+        .sidebar-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+        .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+        .sidebar-nav a { display: block; text-decoration: none; font-size: 0.9rem; color: rgba(255,255,255,0.45); padding: 8px 12px; border-radius: 10px; border-left: 2px solid transparent; transition: all 0.2s; }
+        .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--color-grassgreen); border-left-color: var(--color-grassgreen); background: rgba(79,209,108,0.06); }
+        .legal-links { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+        .legal-link-item { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.35); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+        .legal-link-item:hover { color: var(--color-grassgreen); }
+        .legal-link-item i { font-size: 0.75rem; }
+
+        /* MAIN */
+        .legal-main { flex: 1; padding: 60px 80px 120px 80px; max-width: 80vw; }
+        .doc-meta { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+        .doc-badge { display: inline-block; background: rgba(79,209,108,0.12); border: 1px solid rgba(79,209,108,0.3); color: var(--color-grassgreen); border-radius: 40px; padding: 5px 18px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .doc-date { font-size: 0.85rem; color: rgba(255,255,255,0.35); }
+        .doc-title { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(120deg, var(--color-white) 0%, var(--color-grassgreen) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .doc-intro { font-size: 1.1rem; color: rgba(255,255,255,0.55); margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+        /* SECTIONS */
+        .legal-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+        .section-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-grassgreen); margin-bottom: 12px; }
+        .legal-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--color-white); }
+        .legal-section p { font-size: 0.98rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+        .legal-section ul { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+        .legal-section ul li { font-size: 0.98rem; color: rgba(255,255,255,0.6); padding-left: 20px; position: relative; }
+        .legal-section ul li::before { content: "→"; position: absolute; left: 0; color: var(--color-grassgreen); font-size: 0.8rem; top: 2px; }
+        .highlight-box { background: rgba(79,209,108,0.06); border: 1px solid rgba(79,209,108,0.2); border-radius: 14px; padding: 20px 24px; margin: 20px 0; }
+        .highlight-box p { margin: 0; font-size: 0.92rem; }
+
+        /* COOKIE TYPE TABLE */
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+        .data-table th { text-align: left; padding: 12px 16px; background: rgba(79,209,108,0.08); color: var(--color-grassgreen); font-weight: 600; border-bottom: 1px solid rgba(79,209,108,0.2); }
+        .data-table td { padding: 12px 16px; color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+        .data-table tr:last-child td { border-bottom: none; }
+
+        /* CONTACT STRIP */
+        .contact-strip { background: rgba(79,209,108,0.07); border: 1px solid rgba(79,209,108,0.2); border-radius: 24px; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 60px; }
+        .contact-strip h3 { font-size: 1.4rem; margin-bottom: 6px; }
+        .contact-strip p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+        .btn-solid { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; background: var(--color-grassgreen); color: #000; transition: opacity 0.3s; flex-shrink: 0; }
+        .btn-solid:hover { opacity: 0.8; }
+
+        /* COLOR SEPARATOR & FOOTER */
+        .color-separator { width: 100%; height: 24px; margin: 10px 0; background-image: radial-gradient(circle at 12px center, var(--color-grassgreen) 0 8px, transparent 9px), radial-gradient(circle at 36px center, var(--color-ceruleanblue) 0 8px, transparent 9px), radial-gradient(circle at 60px center, var(--color-coralred) 0 8px, transparent 9px), radial-gradient(circle at 84px center, var(--color-lightgray) 0 8px, transparent 9px); background-size: 96px 24px; background-repeat: repeat-x; }
+        .footer { background: #080808; padding: 80px 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer__col h3 { color: var(--color-ceruleanblue); margin-bottom: 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer__tagline { margin: 20px 0; font-size: 0.95rem; color: #888; }
+        .footer__links { list-style: none; }
+        .footer__links li { margin-bottom: 12px; }
+        .footer__links a { text-decoration: none; color: var(--color-lightgray); font-size: 0.9rem; transition: color 0.2s; }
+        .footer__links a:hover { color: var(--color-coralred); }
+        .footer__social-min { display: flex; gap: 15px; font-size: 1.2rem; }
+        .footer__social-min a { color: var(--color-white); }
+        .footer__logo img { height: 4vh; width: auto; min-height: 40px; min-width: 100px; }
+        .footer__bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+
+        @media (max-width: 1024px) { .legal-sidebar { display: none; } .legal-main { padding: 60px 32px 80px; max-width: 100vw; } .contact-strip { flex-direction: column; align-items: flex-start; } }
+        @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr 1fr; } .header { padding: 16px 20px; } .header__nav-list { gap: 16px; } .data-table { font-size: 0.82rem; } }
+    </style>
 </head>
 <body>
 
+<header class="header">
+    <div class="grotix__logo"><a href="../index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
+    <nav class="header__nav">
+        <ul class="header__nav-list">
+            <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+            <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+            <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+            <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+        </ul>
+    </nav>
+    <div class="header__language-selector">
+        <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+</header>
+
+<div class="legal-wrap">
+    <!-- SIDEBAR -->
+    <aside class="legal-sidebar">
+        <a href="../index.html" class="sidebar-back"><i class="fas fa-arrow-left"></i> <span data-i18n="legal.back">Back to site</span></a>
+        <p class="sidebar-label" data-i18n="legal.toc">On this page</p>
+        <ul class="sidebar-nav">
+            <li><a href="#what" data-i18n="cookies.s1.title">What Are Cookies</a></li>
+            <li><a href="#types" data-i18n="cookies.s2.title">Types We Use</a></li>
+            <li><a href="#thirdparty" data-i18n="cookies.s3.title">Third-Party Cookies</a></li>
+            <li><a href="#duration" data-i18n="cookies.s4.title">Cookie Duration</a></li>
+            <li><a href="#control" data-i18n="cookies.s5.title">Your Controls</a></li>
+            <li><a href="#consent" data-i18n="cookies.s6.title">Consent</a></li>
+            <li><a href="#changes" data-i18n="cookies.s7.title">Policy Changes</a></li>
+            <li><a href="#contact" data-i18n="cookies.s8.title">Contact</a></li>
+        </ul>
+        <div class="legal-links">
+            <a href="terms.html" class="legal-link-item"><i class="fas fa-file-alt"></i> <span data-i18n="footer.terms">Terms and Conditions</span></a>
+            <a href="privacy.html" class="legal-link-item"><i class="fas fa-shield-alt"></i> <span data-i18n="footer.privacy">Privacy Policy</span></a>
+            <a href="complaints.html" class="legal-link-item"><i class="fas fa-book"></i> <span data-i18n="footer.complaints">Complaints Book</span></a>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="legal-main">
+        <div class="doc-meta">
+            <span class="doc-badge" data-i18n="footer.cookies">Cookies Policy</span>
+            <span class="doc-date" data-i18n="legal.updated">Last updated: January 1, 2026</span>
+        </div>
+        <h1 class="doc-title" data-i18n="cookies.title">Cookies Policy</h1>
+        <p class="doc-intro" data-i18n="cookies.intro">Grotix uses cookies and similar tracking technologies on its web platform and mobile application to ensure a reliable, personalized experience. This Policy explains what cookies we use, why we use them, and how you can manage your preferences.</p>
+
+        <!-- 01 -->
+        <div class="legal-section" id="what">
+            <p class="section-num">01</p>
+            <h2 data-i18n="cookies.s1.title">What Are Cookies</h2>
+            <p data-i18n="cookies.s1.p1">Cookies are small text files placed on your device when you visit a website or use a web-based application. They allow the platform to remember information about your visit — such as your preferred language, authenticated session, or dashboard layout — so you don't have to reconfigure everything on each visit.</p>
+            <p data-i18n="cookies.s1.p2">Similar technologies — such as local storage tokens and device identifiers used in our mobile app — serve the same functional purposes and are equally covered by this Policy.</p>
+            <div class="highlight-box">
+                <p data-i18n="cookies.s1.note">Grotix does not use cookies for advertising, behavioral profiling, or cross-site tracking. Our use is strictly limited to what is necessary to operate the platform securely and effectively.</p>
+            </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="legal-section" id="types">
+            <p class="section-num">02</p>
+            <h2 data-i18n="cookies.s2.title">Types of Cookies We Use</h2>
+            <p data-i18n="cookies.s2.p1">We classify our cookies into four categories based on their purpose:</p>
+
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th data-i18n="cookies.table.type">Type</th>
+                    <th data-i18n="cookies.table.purpose">Purpose</th>
+                    <th data-i18n="cookies.table.required">Required</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td data-i18n="cookies.table.r1.type">Strictly Necessary</td>
+                    <td data-i18n="cookies.table.r1.purpose">Maintain your authenticated session (JWT token), enforce role-based access, and keep the platform secure. Without these, the service cannot function.</td>
+                    <td data-i18n="cookies.table.r1.req">Always active</td>
+                </tr>
+                <tr>
+                    <td data-i18n="cookies.table.r2.type">Functional</td>
+                    <td data-i18n="cookies.table.r2.purpose">Remember your language preference (EN/ES), dashboard layout settings, and notification preferences so your configuration persists across sessions.</td>
+                    <td data-i18n="cookies.table.r2.req">Optional</td>
+                </tr>
+                <tr>
+                    <td data-i18n="cookies.table.r3.type">Performance & Analytics</td>
+                    <td data-i18n="cookies.table.r3.purpose">Collect anonymized, aggregated data about how users interact with the platform — pages visited, features used, error rates — to help us improve reliability and usability.</td>
+                    <td data-i18n="cookies.table.r3.req">Optional</td>
+                </tr>
+                <tr>
+                    <td data-i18n="cookies.table.r4.type">Security</td>
+                    <td data-i18n="cookies.table.r4.purpose">Detect and prevent fraudulent activity, unauthorized access attempts, and CSRF attacks. These work alongside our JWT authentication layer.</td>
+                    <td data-i18n="cookies.table.r4.req">Always active</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 03 -->
+        <div class="legal-section" id="thirdparty">
+            <p class="section-num">03</p>
+            <h2 data-i18n="cookies.s3.title">Third-Party Cookies</h2>
+            <p data-i18n="cookies.s3.p1">In limited cases, trusted third-party service providers used by Grotix may place their own cookies on your device. These providers are contractually bound to use such data only for the services they perform on our behalf and not for their own commercial purposes.</p>
+            <ul>
+                <li data-i18n="cookies.s3.l1"><strong>Cloud infrastructure providers</strong> — may set session-level cookies to route requests efficiently and maintain connection stability.</li>
+                <li data-i18n="cookies.s3.l2"><strong>Analytics tools</strong> — if enabled, may use anonymized identifiers to compile aggregated usage statistics. No personally identifiable information is shared.</li>
+                <li data-i18n="cookies.s3.l3"><strong>Email delivery services</strong> — may use tracking pixels in transactional emails (e.g., alert notifications) to confirm delivery. You can disable image loading in your email client to prevent this.</li>
+            </ul>
+            <p data-i18n="cookies.s3.p2">We do not integrate advertising networks, social media tracking pixels, or any third-party cookie systems unrelated to platform operation.</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="legal-section" id="duration">
+            <p class="section-num">04</p>
+            <h2 data-i18n="cookies.s4.title">Cookie Duration</h2>
+            <p data-i18n="cookies.s4.p1">Cookies used by Grotix fall into two duration categories:</p>
+            <ul>
+                <li data-i18n="cookies.s4.l1"><strong>Session cookies</strong> — exist only while your browser or app session is active. They are automatically deleted when you close the application or browser tab. Used primarily for authentication tokens and CSRF protection.</li>
+                <li data-i18n="cookies.s4.l2"><strong>Persistent cookies</strong> — remain on your device for a defined period after your session ends. Our functional cookies (e.g., language preference) persist for up to 12 months, or until you clear them manually.</li>
+            </ul>
+            <div class="highlight-box">
+                <p data-i18n="cookies.s4.note">All cookie lifetimes are reviewed periodically. We aim to use the shortest retention period that still delivers the intended functionality.</p>
+            </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="legal-section" id="control">
+            <p class="section-num">05</p>
+            <h2 data-i18n="cookies.s5.title">Your Controls</h2>
+            <p data-i18n="cookies.s5.p1">You have several ways to manage or restrict cookies:</p>
+            <ul>
+                <li data-i18n="cookies.s5.l1"><strong>Platform preferences</strong> — you can toggle optional cookies (functional and analytics) from the Privacy Settings panel inside your Grotix account.</li>
+                <li data-i18n="cookies.s5.l2"><strong>Browser settings</strong> — most browsers allow you to view, block, or delete cookies at any time via their privacy or security settings. Refer to your browser's help documentation for specific instructions.</li>
+                <li data-i18n="cookies.s5.l3"><strong>Mobile app</strong> — you can reset the app's local storage and revoke notification permissions from your device's application settings.</li>
+                <li data-i18n="cookies.s5.l4"><strong>Opt-out of analytics</strong> — if analytics cookies are enabled, you may opt out at any time without affecting your ability to use the platform.</li>
+            </ul>
+            <p data-i18n="cookies.s5.p2">Please note that disabling strictly necessary cookies will prevent the platform from functioning correctly, as they are essential for authentication and security.</p>
+        </div>
+
+        <!-- 06 -->
+        <div class="legal-section" id="consent">
+            <p class="section-num">06</p>
+            <h2 data-i18n="cookies.s6.title">Consent</h2>
+            <p data-i18n="cookies.s6.p1">When you first access the Grotix web platform, a cookie consent banner will inform you of the categories of cookies in use and request your permission for optional categories. Strictly necessary and security cookies are activated automatically as they are required for the service to operate.</p>
+            <p data-i18n="cookies.s6.p2">Your consent choices are stored in your account settings and applied consistently across devices when you are logged in. You may withdraw or modify your consent at any time via the Privacy Settings panel.</p>
+            <div class="highlight-box">
+                <p data-i18n="cookies.s6.note">Consent for optional cookies is never required to access core irrigation and telemetry features. Refusing optional cookies has no impact on sensor data collection, automated irrigation, or platform reliability.</p>
+            </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="legal-section" id="changes">
+            <p class="section-num">07</p>
+            <h2 data-i18n="cookies.s7.title">Policy Changes</h2>
+            <p data-i18n="cookies.s7.p1">We may update this Cookies Policy to reflect changes in the technologies we use or in applicable regulations. When we make material changes, we will notify you via email or an in-app notification at least 15 days before the changes take effect. The updated policy will always be available on this page with a revised "Last updated" date.</p>
+            <p data-i18n="cookies.s7.p2">We encourage you to review this Policy periodically to stay informed about how we use cookies and what controls are available to you.</p>
+        </div>
+
+        <!-- 08 -->
+        <div class="legal-section" id="contact">
+            <p class="section-num">08</p>
+            <h2 data-i18n="cookies.s8.title">Contact</h2>
+            <p data-i18n="cookies.s8.p1">If you have questions or concerns about our use of cookies or this Policy, please contact our Data Protection Officer:</p>
+            <div class="highlight-box">
+                <p data-i18n="cookies.s8.note">Email: <strong>privacy@grotix.io</strong> — We aim to respond within 5 business days.</p>
+            </div>
+        </div>
+
+        <div class="contact-strip">
+            <div>
+                <h3 data-i18n="cookies.contact.title">Questions about our cookies?</h3>
+                <p data-i18n="cookies.contact.desc">Our team is happy to clarify how we use cookies and your available controls.</p>
+            </div>
+            <a href="../index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+        </div>
+    </main>
+</div>
+
+<div class="color-separator"></div>
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <div class="footer__logo"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></div>
+                <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+                <div class="footer__social-min">
+                    <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll"><i class="fab fa-instagram"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136"><i class="fab fa-facebook"></i></a>
+                    <a target="_blank" href="https://x.com/grotix99540"><i class="fab fa-twitter"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.nav.title">Navigation</h3>
+                <ul class="footer__links">
+                    <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+                    <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+                    <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.legal.title">Legal</h3>
+                <ul class="footer__links">
+                    <li><a href="terms.html" data-i18n="footer.terms">Terms and Conditions</a></li>
+                    <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="cookies.html" data-i18n="footer.cookies">Cookies Policy</a></li>
+                    <li><a href="complaints.html" data-i18n="footer.complaints">Complaints Book</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.support.title">Support</h3>
+                <ul class="footer__links">
+                    <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+                    <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom"><p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p></div>
+    </div>
+</footer>
+
+<script>
+    const i18n = {
+        en: {
+            "nav.hero":"General","nav.services":"Services","nav.app":"App","nav.about":"Us","nav.contact":"Contact","hero.get":"GET NOW!",
+            "footer.tagline":"AI-Driven Precision Irrigation for Smarter Farming.","footer.nav.title":"Navigation","footer.legal.title":"Legal","footer.support.title":"Support",
+            "footer.terms":"Terms and Conditions","footer.privacy":"Privacy Policy","footer.cookies":"Cookies Policy","footer.complaints":"Complaints Book",
+            "footer.help":"Help","footer.faq":"Frequent Questions","footer.chvr":"© 2026 Grotix - Celevi. All rights reserved.",
+            "legal.back":"Back to site","legal.toc":"On this page","legal.updated":"Last updated: January 1, 2026",
+            "cookies.contact.title":"Questions about our cookies?",
+            "cookies.contact.desc":"Our team is happy to clarify how we use cookies and your available controls.",
+            "cookies.title":"Cookies Policy",
+            "cookies.intro":"Grotix uses cookies and similar tracking technologies on its web platform and mobile application to ensure a reliable, personalized experience. This Policy explains what cookies we use, why we use them, and how you can manage your preferences.",
+            "cookies.s1.title":"What Are Cookies",
+            "cookies.s1.p1":"Cookies are small text files placed on your device when you visit a website or use a web-based application. They allow the platform to remember information about your visit — such as your preferred language, authenticated session, or dashboard layout — so you don't have to reconfigure everything on each visit.",
+            "cookies.s1.p2":"Similar technologies — such as local storage tokens and device identifiers used in our mobile app — serve the same functional purposes and are equally covered by this Policy.",
+            "cookies.s1.note":"Grotix does not use cookies for advertising, behavioral profiling, or cross-site tracking. Our use is strictly limited to what is necessary to operate the platform securely and effectively.",
+            "cookies.s2.title":"Types of Cookies We Use",
+            "cookies.s2.p1":"We classify our cookies into four categories based on their purpose:",
+            "cookies.table.type":"Type","cookies.table.purpose":"Purpose","cookies.table.required":"Required",
+            "cookies.table.r1.type":"Strictly Necessary","cookies.table.r1.purpose":"Maintain your authenticated session (JWT token), enforce role-based access, and keep the platform secure. Without these, the service cannot function.","cookies.table.r1.req":"Always active",
+            "cookies.table.r2.type":"Functional","cookies.table.r2.purpose":"Remember your language preference (EN/ES), dashboard layout settings, and notification preferences so your configuration persists across sessions.","cookies.table.r2.req":"Optional",
+            "cookies.table.r3.type":"Performance & Analytics","cookies.table.r3.purpose":"Collect anonymized, aggregated data about how users interact with the platform — pages visited, features used, error rates — to help us improve reliability and usability.","cookies.table.r3.req":"Optional",
+            "cookies.table.r4.type":"Security","cookies.table.r4.purpose":"Detect and prevent fraudulent activity, unauthorized access attempts, and CSRF attacks. These work alongside our JWT authentication layer.","cookies.table.r4.req":"Always active",
+            "cookies.s3.title":"Third-Party Cookies",
+            "cookies.s3.p1":"In limited cases, trusted third-party service providers used by Grotix may place their own cookies on your device. These providers are contractually bound to use such data only for the services they perform on our behalf and not for their own commercial purposes.",
+            "cookies.s3.l1":"Cloud infrastructure providers — may set session-level cookies to route requests efficiently and maintain connection stability.",
+            "cookies.s3.l2":"Analytics tools — if enabled, may use anonymized identifiers to compile aggregated usage statistics. No personally identifiable information is shared.",
+            "cookies.s3.l3":"Email delivery services — may use tracking pixels in transactional emails (e.g., alert notifications) to confirm delivery. You can disable image loading in your email client to prevent this.",
+            "cookies.s3.p2":"We do not integrate advertising networks, social media tracking pixels, or any third-party cookie systems unrelated to platform operation.",
+            "cookies.s4.title":"Cookie Duration",
+            "cookies.s4.p1":"Cookies used by Grotix fall into two duration categories:",
+            "cookies.s4.l1":"Session cookies — exist only while your browser or app session is active. They are automatically deleted when you close the application or browser tab. Used primarily for authentication tokens and CSRF protection.",
+            "cookies.s4.l2":"Persistent cookies — remain on your device for a defined period after your session ends. Our functional cookies (e.g., language preference) persist for up to 12 months, or until you clear them manually.",
+            "cookies.s4.note":"All cookie lifetimes are reviewed periodically. We aim to use the shortest retention period that still delivers the intended functionality.",
+            "cookies.s5.title":"Your Controls",
+            "cookies.s5.p1":"You have several ways to manage or restrict cookies:",
+            "cookies.s5.l1":"Platform preferences — you can toggle optional cookies (functional and analytics) from the Privacy Settings panel inside your Grotix account.",
+            "cookies.s5.l2":"Browser settings — most browsers allow you to view, block, or delete cookies at any time via their privacy or security settings. Refer to your browser's help documentation for specific instructions.",
+            "cookies.s5.l3":"Mobile app — you can reset the app's local storage and revoke notification permissions from your device's application settings.",
+            "cookies.s5.l4":"Opt-out of analytics — if analytics cookies are enabled, you may opt out at any time without affecting your ability to use the platform.",
+            "cookies.s5.p2":"Please note that disabling strictly necessary cookies will prevent the platform from functioning correctly, as they are essential for authentication and security.",
+            "cookies.s6.title":"Consent",
+            "cookies.s6.p1":"When you first access the Grotix web platform, a cookie consent banner will inform you of the categories of cookies in use and request your permission for optional categories. Strictly necessary and security cookies are activated automatically as they are required for the service to operate.",
+            "cookies.s6.p2":"Your consent choices are stored in your account settings and applied consistently across devices when you are logged in. You may withdraw or modify your consent at any time via the Privacy Settings panel.",
+            "cookies.s6.note":"Consent for optional cookies is never required to access core irrigation and telemetry features. Refusing optional cookies has no impact on sensor data collection, automated irrigation, or platform reliability.",
+            "cookies.s7.title":"Policy Changes",
+            "cookies.s7.p1":"We may update this Cookies Policy to reflect changes in the technologies we use or in applicable regulations. When we make material changes, we will notify you via email or an in-app notification at least 15 days before the changes take effect. The updated policy will always be available on this page with a revised \"Last updated\" date.",
+            "cookies.s7.p2":"We encourage you to review this Policy periodically to stay informed about how we use cookies and what controls are available to you.",
+            "cookies.s8.title":"Contact",
+            "cookies.s8.p1":"If you have questions or concerns about our use of cookies or this Policy, please contact our Data Protection Officer:",
+            "cookies.s8.note":"Email: privacy@grotix.io — We aim to respond within 5 business days."
+        },
+        es: {
+            "nav.hero":"General","nav.services":"Servicios","nav.app":"App","nav.about":"Nosotros","nav.contact":"Contacto","hero.get":"¡OBTENER AHORA!",
+            "footer.tagline":"Irrigación de precisión con IA para una agricultura inteligente.","footer.nav.title":"Navegación","footer.legal.title":"Legal","footer.support.title":"Soporte",
+            "footer.terms":"Términos y Condiciones","footer.privacy":"Política de Privacidad","footer.cookies":"Política de Cookies","footer.complaints":"Libro de Reclamaciones",
+            "footer.help":"Ayuda","footer.faq":"Preguntas Frecuentes","footer.chvr":"© 2026 Grotix - Celevi. Todos los derechos reservados.",
+            "legal.back":"Volver al sitio","legal.toc":"En esta página","legal.updated":"Última actualización: 1 de enero de 2026",
+            "cookies.contact.title":"¿Preguntas sobre nuestras cookies?",
+            "cookies.contact.desc":"Nuestro equipo estará encantado de explicarte cómo usamos las cookies y los controles disponibles.",
+            "cookies.title":"Política de Cookies",
+            "cookies.intro":"Grotix utiliza cookies y tecnologías de rastreo similares en su plataforma web y aplicación móvil para garantizar una experiencia fiable y personalizada. Esta Política explica qué cookies utilizamos, por qué las usamos y cómo puedes gestionar tus preferencias.",
+            "cookies.s1.title":"¿Qué Son las Cookies?",
+            "cookies.s1.p1":"Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web o usas una aplicación web. Permiten a la plataforma recordar información sobre tu visita — como tu idioma preferido, tu sesión autenticada o la configuración del panel — para que no tengas que reconfigurarlo todo en cada visita.",
+            "cookies.s1.p2":"Tecnologías similares — como los tokens de almacenamiento local e identificadores de dispositivo utilizados en nuestra app móvil — cumplen las mismas funciones y están igualmente cubiertas por esta Política.",
+            "cookies.s1.note":"Grotix no utiliza cookies para publicidad, elaboración de perfiles de comportamiento ni rastreo entre sitios. Su uso está estrictamente limitado a lo necesario para operar la plataforma de forma segura y eficaz.",
+            "cookies.s2.title":"Tipos de Cookies que Utilizamos",
+            "cookies.s2.p1":"Clasificamos nuestras cookies en cuatro categorías según su finalidad:",
+            "cookies.table.type":"Tipo","cookies.table.purpose":"Finalidad","cookies.table.required":"Requerida",
+            "cookies.table.r1.type":"Estrictamente Necesarias","cookies.table.r1.purpose":"Mantienen tu sesión autenticada (token JWT), aplican el control de acceso por roles y garantizan la seguridad de la plataforma. Sin ellas, el servicio no puede funcionar.","cookies.table.r1.req":"Siempre activas",
+            "cookies.table.r2.type":"Funcionales","cookies.table.r2.purpose":"Recuerdan tu preferencia de idioma (ES/EN), la configuración del panel y las preferencias de notificaciones para que tu configuración persista entre sesiones.","cookies.table.r2.req":"Opcionales",
+            "cookies.table.r3.type":"Rendimiento y Analítica","cookies.table.r3.purpose":"Recopilan datos anonimizados y agregados sobre cómo los usuarios interactúan con la plataforma — páginas visitadas, funciones utilizadas, tasas de error — para ayudarnos a mejorar la fiabilidad y la usabilidad.","cookies.table.r3.req":"Opcionales",
+            "cookies.table.r4.type":"Seguridad","cookies.table.r4.purpose":"Detectan y previenen actividad fraudulenta, intentos de acceso no autorizado y ataques CSRF. Funcionan junto a nuestra capa de autenticación JWT.","cookies.table.r4.req":"Siempre activas",
+            "cookies.s3.title":"Cookies de Terceros",
+            "cookies.s3.p1":"En casos limitados, los proveedores de servicios de terceros de confianza utilizados por Grotix pueden colocar sus propias cookies en tu dispositivo. Estos proveedores están contractualmente obligados a utilizar dichos datos únicamente para los servicios que prestan en nuestro nombre, y no para sus propios fines comerciales.",
+            "cookies.s3.l1":"Proveedores de infraestructura en la nube — pueden establecer cookies de sesión para enrutar las solicitudes de forma eficiente y mantener la estabilidad de la conexión.",
+            "cookies.s3.l2":"Herramientas de analítica — si están habilitadas, pueden usar identificadores anonimizados para compilar estadísticas de uso agregadas. No se comparte ninguna información de identificación personal.",
+            "cookies.s3.l3":"Servicios de envío de correo electrónico — pueden usar píxeles de seguimiento en correos transaccionales (p. ej., notificaciones de alertas) para confirmar la entrega. Puedes desactivar la carga de imágenes en tu cliente de correo para evitarlo.",
+            "cookies.s3.p2":"No integramos redes publicitarias, píxeles de rastreo de redes sociales ni ningún sistema de cookies de terceros no relacionado con el funcionamiento de la plataforma.",
+            "cookies.s4.title":"Duración de las Cookies",
+            "cookies.s4.p1":"Las cookies utilizadas por Grotix se dividen en dos categorías según su duración:",
+            "cookies.s4.l1":"Cookies de sesión — existen únicamente mientras tu sesión de navegador o aplicación está activa. Se eliminan automáticamente cuando cierras la aplicación o la pestaña del navegador. Se usan principalmente para tokens de autenticación y protección CSRF.",
+            "cookies.s4.l2":"Cookies persistentes — permanecen en tu dispositivo durante un período definido tras el fin de tu sesión. Nuestras cookies funcionales (p. ej., preferencia de idioma) persisten hasta 12 meses, o hasta que las elimines manualmente.",
+            "cookies.s4.note":"Se revisan periódicamente los periodos de vida de todas las cookies. Buscamos usar el período de retención más corto que siga cumpliendo la funcionalidad prevista.",
+            "cookies.s5.title":"Tus Controles",
+            "cookies.s5.p1":"Tienes varias formas de gestionar o restringir las cookies:",
+            "cookies.s5.l1":"Preferencias de la plataforma — puedes activar o desactivar las cookies opcionales (funcionales y de analítica) desde el panel de Configuración de Privacidad dentro de tu cuenta Grotix.",
+            "cookies.s5.l2":"Configuración del navegador — la mayoría de los navegadores te permiten ver, bloquear o eliminar cookies en cualquier momento mediante su configuración de privacidad o seguridad. Consulta la documentación de ayuda de tu navegador para obtener instrucciones específicas.",
+            "cookies.s5.l3":"Aplicación móvil — puedes restablecer el almacenamiento local de la app y revocar los permisos de notificación desde la configuración de aplicaciones de tu dispositivo.",
+            "cookies.s5.l4":"Exclusión de la analítica — si las cookies de analítica están habilitadas, puedes desactivarlas en cualquier momento sin que ello afecte a tu capacidad de usar la plataforma.",
+            "cookies.s5.p2":"Ten en cuenta que deshabilitar las cookies estrictamente necesarias impedirá el correcto funcionamiento de la plataforma, ya que son esenciales para la autenticación y la seguridad.",
+            "cookies.s6.title":"Consentimiento",
+            "cookies.s6.p1":"La primera vez que accedas a la plataforma web de Grotix, un banner de consentimiento de cookies te informará sobre las categorías de cookies en uso y solicitará tu permiso para las categorías opcionales. Las cookies estrictamente necesarias y de seguridad se activan automáticamente, ya que son necesarias para el funcionamiento del servicio.",
+            "cookies.s6.p2":"Tus elecciones de consentimiento se almacenan en la configuración de tu cuenta y se aplican de forma consistente en todos tus dispositivos cuando has iniciado sesión. Puedes retirar o modificar tu consentimiento en cualquier momento a través del panel de Configuración de Privacidad.",
+            "cookies.s6.note":"El consentimiento para cookies opcionales nunca es necesario para acceder a las funciones básicas de irrigación y telemetría. Rechazar las cookies opcionales no tiene ningún impacto en la recopilación de datos de sensores, la irrigación automática ni la fiabilidad de la plataforma.",
+            "cookies.s7.title":"Cambios en la Política",
+            "cookies.s7.p1":"Podemos actualizar esta Política de Cookies para reflejar cambios en las tecnologías que usamos o en la normativa aplicable. Cuando realicemos cambios sustanciales, te notificaremos por correo electrónico o mediante una notificación en la app con al menos 15 días de antelación. La política actualizada siempre estará disponible en esta página con la fecha de «Última actualización» revisada.",
+            "cookies.s7.p2":"Te recomendamos revisar esta Política periódicamente para mantenerte informado sobre cómo usamos las cookies y qué controles tienes disponibles.",
+            "cookies.s8.title":"Contacto",
+            "cookies.s8.p1":"Si tienes preguntas o dudas sobre el uso de cookies o esta Política, contacta con nuestro Delegado de Protección de Datos:",
+            "cookies.s8.note":"Correo electrónico: privacy@grotix.io — Nos comprometemos a responder en un plazo de 5 días hábiles."
+        }
+    };
+
+    let currentLanguage = 'en';
+    const translatePage = (lang) => {
+        document.querySelectorAll('.language-btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'));
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const k = el.getAttribute('data-i18n');
+            if (i18n[lang]?.[k]) el.textContent = i18n[lang][k];
+        });
+        localStorage.setItem('grotix-language', lang);
+        currentLanguage = lang;
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const saved = localStorage.getItem('grotix-language');
+        translatePage(saved || (navigator.language.startsWith('es') ? 'es' : 'en'));
+        document.querySelectorAll('.language-btn').forEach(b => b.addEventListener('click', () => translatePage(b.dataset.lang)));
+
+        // Sidebar active on scroll
+        const sections = document.querySelectorAll('.legal-section');
+        const links = document.querySelectorAll('.sidebar-nav a');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => obs.observe(s));
+    });
+</script>
 </body>
 </html>

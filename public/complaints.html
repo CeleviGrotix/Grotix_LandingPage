@@ -1,10 +1,712 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Grotix – Complaints Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/components/variables.css">
+  <link rel="stylesheet" href="assets/styles/index.css">
+  <style>
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .legal-wrap { display: flex; gap: 0; padding-top: 80px; min-height: 100vh; }
+
+    /* ── SIDEBAR ────────────────────────────────────────── */
+    .legal-sidebar { width: 280px; flex-shrink: 0; padding: 60px 32px; border-right: 1px solid rgba(255,255,255,0.06); position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .sidebar-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+    .sidebar-back:hover { color: var(--color-ceruleanblue); }
+    .sidebar-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav a { display: block; text-decoration: none; font-size: 0.9rem; color: rgba(255,255,255,0.45); padding: 8px 12px; border-radius: 10px; border-left: 2px solid transparent; transition: all 0.2s; }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--color-ceruleanblue); border-left-color: var(--color-ceruleanblue); background: rgba(64,191,226,0.06); }
+    .legal-links { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .legal-link-item { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.35); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .legal-link-item:hover { color: var(--color-ceruleanblue); }
+    .legal-link-item i { font-size: 0.75rem; }
+
+    /* ── MAIN ───────────────────────────────────────────── */
+    .legal-main { flex: 1; padding: 60px 80px 120px 80px; max-width: 80vw; }
+    .doc-meta { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .doc-badge { display: inline-block; background: rgba(64,191,226,0.12); border: 1px solid rgba(64,191,226,0.3); color: var(--color-ceruleanblue); border-radius: 40px; padding: 5px 18px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-date { font-size: 0.85rem; color: rgba(255,255,255,0.35); }
+    .doc-title { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(120deg, var(--color-white) 0%, var(--color-ceruleanblue) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .doc-intro { font-size: 1.1rem; color: rgba(255,255,255,0.55); margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* ── LEGAL SECTIONS ─────────────────────────────────── */
+    .legal-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+    .section-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-ceruleanblue); margin-bottom: 12px; }
+    .legal-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--color-white); }
+    .legal-section p { font-size: 0.98rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+    .legal-section ul { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+    .legal-section ul li { font-size: 0.98rem; color: rgba(255,255,255,0.6); padding-left: 20px; position: relative; }
+    .legal-section ul li::before { content: "→"; position: absolute; left: 0; color: var(--color-ceruleanblue); font-size: 0.8rem; top: 2px; }
+    .highlight-box { background: rgba(64,191,226,0.06); border: 1px solid rgba(64,191,226,0.2); border-radius: 14px; padding: 20px 24px; margin: 20px 0; }
+    .highlight-box p { margin: 0; font-size: 0.92rem; }
+
+    /* ── COMPLAINT FORM ─────────────────────────────────── */
+    .complaints-form-section { scroll-margin-top: 100px; margin-bottom: 56px; }
+    .complaints-form-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: var(--color-white); }
+    .complaints-form-section .section-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-ceruleanblue); margin-bottom: 12px; }
+    .complaints-form-section p.form-intro { font-size: 0.98rem; color: rgba(255,255,255,0.6); margin-bottom: 32px; }
+
+    .complaint-form-wrap {
+      position: relative;
+      max-width: 780px;
+    }
+    .complaint-form-bg {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(64,191,226,0.3), transparent);
+      border-radius: 20px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .complaint-form {
+      position: relative;
+      top: 40px;
+      left: 40px;
+      z-index: 2;
+      background: rgba(64,191,226,0.08);
+      border: 1px solid rgba(64,191,226,0.2);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* grid layout inside form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .cf-group { display: flex; flex-direction: column; gap: 8px; }
+    .cf-group label { color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+    .cf-group label span.req { color: var(--color-ceruleanblue); margin-left: 3px; }
+
+    .cf-group input,
+    .cf-group select,
+    .cf-group textarea {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(64,191,226,0.2);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--color-white);
+      font-family: var(--font-unique);
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .cf-group input:focus,
+    .cf-group select:focus,
+    .cf-group textarea:focus {
+      border-color: var(--color-ceruleanblue);
+      background: rgba(64,191,226,0.06);
+    }
+    .cf-group select option { background: #0d1a1f; color: var(--color-white); }
+    .cf-group textarea { resize: vertical; min-height: 120px; }
+
+    /* divider inside form */
+    .form-divider { width: 100%; height: 1px; background: rgba(64,191,226,0.12); margin: 24px 0; }
+    .form-section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-ceruleanblue); margin-bottom: 20px; }
+
+    /* submit row */
+    .form-submit-row { display: flex; justify-content: flex-end; align-items: center; gap: 20px; margin-top: 8px; }
+    .form-submit-note { font-size: 0.82rem; color: rgba(255,255,255,0.3); flex: 1; }
+    .btn-complaint-submit {
+      background: var(--color-ceruleanblue);
+      color: #000;
+      border: none;
+      padding: 13px 36px;
+      border-radius: 12px;
+      font-family: var(--font-unique);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .btn-complaint-submit:hover { opacity: 0.85; transform: scale(1.02); }
+    .btn-complaint-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── STATUS MESSAGES ────────────────────────────────── */
+    .form-status {
+      display: none;
+      margin-top: 20px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .form-status.success {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(79,209,108,0.1);
+      border: 1px solid rgba(79,209,108,0.3);
+      color: var(--color-grassgreen);
+    }
+    .form-status.error {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,87,87,0.1);
+      border: 1px solid rgba(255,87,87,0.3);
+      color: var(--color-coralred);
+    }
+
+    /* ── CONTACT STRIP ──────────────────────────────────── */
+    .contact-strip { background: rgba(64,191,226,0.07); border: 1px solid rgba(64,191,226,0.2); border-radius: 24px; padding: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 60px; }
+    .contact-strip h3 { font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-strip p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+    .btn-solid { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; background: var(--color-ceruleanblue); color: #000; transition: opacity 0.3s; flex-shrink: 0; }
+    .btn-solid:hover { opacity: 0.8; }
+
+    /* ── COLOR SEPARATOR & FOOTER ───────────────────────── */
+    .color-separator { width: 100%; height: 24px; margin: 10px 0; background-image: radial-gradient(circle at 12px center, var(--color-grassgreen) 0 8px, transparent 9px), radial-gradient(circle at 36px center, var(--color-ceruleanblue) 0 8px, transparent 9px), radial-gradient(circle at 60px center, var(--color-coralred) 0 8px, transparent 9px), radial-gradient(circle at 84px center, var(--color-lightgray) 0 8px, transparent 9px); background-size: 96px 24px; background-repeat: repeat-x; }
+    .footer { background: #080808; padding: 80px 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .footer__col h3 { color: var(--color-ceruleanblue); margin-bottom: 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+    .footer__tagline { margin: 20px 0; font-size: 0.95rem; color: #888; }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 12px; }
+    .footer__links a { text-decoration: none; color: var(--color-lightgray); font-size: 0.9rem; transition: color 0.2s; }
+    .footer__links a:hover { color: var(--color-coralred); }
+    .footer__social-min { display: flex; gap: 15px; font-size: 1.2rem; }
+    .footer__social-min a { color: var(--color-white); }
+    .footer__social-min a:hover { color: var(--color-coralred); }
+    .footer__logo img { height: 4vh; width: auto; min-height: 40px; min-width: 100px; }
+    .footer__bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .legal-sidebar { display: none; }
+      .legal-main { padding: 60px 32px 80px; max-width: 100vw; }
+      .contact-strip { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .complaint-form { padding: 28px 20px; }
+      .form-submit-row { flex-direction: column; align-items: stretch; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- HEADER -->
+<header class="header">
+  <div class="grotix__logo"><a href="../index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
+  <nav class="header__nav">
+    <ul class="header__nav-list">
+      <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+      <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+      <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+      <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+      <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+    </ul>
+  </nav>
+  <div class="header__language-selector">
+    <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+    <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+  </div>
+</header>
+
+<div class="legal-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="legal-sidebar">
+    <a href="../index.html" class="sidebar-back"><i class="fas fa-arrow-left"></i> <span data-i18n="legal.back">Back to site</span></a>
+    <p class="sidebar-label" data-i18n="legal.toc">On this page</p>
+    <ul class="sidebar-nav">
+      <li><a href="#info" data-i18n="complaints.s1.title">What Is This</a></li>
+      <li><a href="#rights" data-i18n="complaints.s2.title">Your Rights</a></li>
+      <li><a href="#process" data-i18n="complaints.s3.title">Process</a></li>
+      <li><a href="#form" data-i18n="complaints.s4.title">Submit a Complaint</a></li>
+    </ul>
+    <div class="legal-links">
+      <a href="terms.html" class="legal-link-item"><i class="fas fa-file-alt"></i> <span data-i18n="footer.terms">Terms and Conditions</span></a>
+      <a href="privacy.html" class="legal-link-item"><i class="fas fa-shield-alt"></i> <span data-i18n="footer.privacy">Privacy Policy</span></a>
+      <a href="cookies.html" class="legal-link-item"><i class="fas fa-cookie-bite"></i> <span data-i18n="footer.cookies">Cookies Policy</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="legal-main">
+    <div class="doc-meta">
+      <span class="doc-badge" data-i18n="footer.complaints">Complaints Book</span>
+      <span class="doc-date" data-i18n="legal.updated">Last updated: January 1, 2026</span>
+    </div>
+    <h1 class="doc-title" data-i18n="complaints.title">Complaints Book</h1>
+    <p class="doc-intro" data-i18n="complaints.intro">In accordance with Peruvian consumer protection regulations, Grotix — operated by Celevi S.A.C. — provides this Complaints Book so that users may formally register any complaint or claim regarding our products and services. We are committed to addressing every submission within the legally mandated timeframe.</p>
+
+    <!-- 01 -->
+    <div class="legal-section" id="info">
+      <p class="section-num">01</p>
+      <h2 data-i18n="complaints.s1.title">What Is This</h2>
+      <p data-i18n="complaints.s1.p1">The Complaints Book (Libro de Reclamaciones) is a mechanism required by Peruvian law (D.S. 011-2011-PCM and the Consumer Protection Code, Law No. 29571) through which any consumer may formally register a complaint or claim against a supplier of goods or services.</p>
+      <p data-i18n="complaints.s1.p2">A <strong>complaint</strong> refers to dissatisfaction with the service or product that is not related to a legal infringement. A <strong>claim</strong> refers to dissatisfaction directly associated with a product or service defect, non-compliance, or consumer rights violation.</p>
+      <div class="highlight-box">
+        <p data-i18n="complaints.s1.note">Submitting a complaint or claim through this book does not limit your right to seek other legal remedies available under Peruvian consumer law, including filing a complaint with INDECOPI.</p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="legal-section" id="rights">
+      <p class="section-num">02</p>
+      <h2 data-i18n="complaints.s2.title">Your Rights</h2>
+      <p data-i18n="complaints.s2.p1">As a consumer of Grotix products and services, you are entitled to:</p>
+      <ul>
+        <li data-i18n="complaints.s2.l1">Receive a timely response to your submission within 30 calendar days.</li>
+        <li data-i18n="complaints.s2.l2">Be notified of the outcome and any corrective actions taken.</li>
+        <li data-i18n="complaints.s2.l3">Escalate unresolved complaints to INDECOPI (National Institute for the Defense of Competition and Intellectual Property) at any time.</li>
+        <li data-i18n="complaints.s2.l4">Request a copy of your submission and any correspondence at no cost.</li>
+      </ul>
+    </div>
+
+    <!-- 03 -->
+    <div class="legal-section" id="process">
+      <p class="section-num">03</p>
+      <h2 data-i18n="complaints.s3.title">Resolution Process</h2>
+      <p data-i18n="complaints.s3.p1">Once your submission is received, Celevi will follow this process:</p>
+      <ul>
+        <li data-i18n="complaints.s3.l1"><strong>Acknowledgment</strong> — You will receive an email confirmation with a unique reference number within 2 business days.</li>
+        <li data-i18n="complaints.s3.l2"><strong>Review</strong> — Our team will investigate the complaint or claim and may contact you for additional information.</li>
+        <li data-i18n="complaints.s3.l3"><strong>Resolution</strong> — A formal response with our findings and proposed resolution will be sent within 30 calendar days of submission.</li>
+        <li data-i18n="complaints.s3.l4"><strong>Follow-up</strong> — If you are unsatisfied with the resolution, you may escalate the matter to INDECOPI.</li>
+      </ul>
+      <div class="highlight-box">
+        <p data-i18n="complaints.s3.note">INDECOPI contact: <strong>www.indecopi.gob.pe</strong> — Phone: 224-7777 (Lima) / 0-800-4-4040 (free from landlines nationwide).</p>
+      </div>
+    </div>
+
+    <!-- 04 — FORM -->
+    <div class="complaints-form-section" id="form">
+      <p class="section-num">04</p>
+      <h2 data-i18n="complaints.s4.title">Submit a Complaint or Claim</h2>
+      <p class="form-intro" data-i18n="complaints.s4.intro">Complete the form below to register your submission. All fields marked with <span style="color:var(--color-ceruleanblue)">*</span> are required.</p>
+
+      <div class="complaint-form-wrap">
+        <div class="complaint-form-bg"></div>
+
+        <form class="complaint-form" id="complaintsForm" novalidate>
+
+          <!-- Section: Submitter info -->
+          <p class="form-section-label" data-i18n="complaints.form.section1">Personal Information</p>
+
+          <div class="form-row">
+            <div class="cf-group">
+              <label for="cf_name" data-i18n="complaints.form.name">Full Name <span class="req">*</span></label>
+              <input type="text" id="cf_name" name="cf_name" required placeholder="John Doe">
+            </div>
+            <div class="cf-group">
+              <label for="cf_email" data-i18n="complaints.form.email">Email Address <span class="req">*</span></label>
+              <input type="email" id="cf_email" name="cf_email" required placeholder="john@example.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="cf-group">
+              <label for="cf_phone" data-i18n="complaints.form.phone">Phone Number</label>
+              <input
+                      type="tel"
+                      id="cf_phone"
+                      name="cf_phone"
+                      placeholder="999999999"
+                      pattern="\d{9}"
+                      maxlength="9"
+                      inputmode="numeric">
+            </div>
+            <div class="cf-group">
+              <label for="cf_docnum" data-i18n="complaints.form.docnum">ID / DNI / Document No. <span class="req">*</span></label>
+              <input
+                      type="text"
+                      id="cf_docnum"
+                      name="cf_docnum"
+                      required
+                      placeholder="12345678"
+                      pattern="\d{8}"
+                      maxlength="8"
+                      inputmode="numeric">
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- Section: Submission details -->
+          <p class="form-section-label" data-i18n="complaints.form.section2">Submission Details</p>
+
+          <div class="form-row">
+            <div class="cf-group">
+              <label for="cf_type" data-i18n="complaints.form.type">Type <span class="req">*</span></label>
+              <select id="cf_type" name="cf_type" required>
+                <option value="" disabled selected data-i18n="complaints.form.type.placeholder">Select type...</option>
+                <option value="complaint" data-i18n="complaints.form.type.complaint">Complaint</option>
+                <option value="claim" data-i18n="complaints.form.type.claim">Claim</option>
+              </select>
+            </div>
+            <div class="cf-group">
+              <label for="cf_product" data-i18n="complaints.form.product">Product / Service <span class="req">*</span></label>
+              <select id="cf_product" name="cf_product" required>
+                <option value="" disabled selected data-i18n="complaints.form.product.placeholder">Select product...</option>
+                <option value="hardware" data-i18n="complaints.form.product.hw">Grotix Sensor Hardware</option>
+                <option value="app" data-i18n="complaints.form.product.app">Mobile Application</option>
+                <option value="subscription" data-i18n="complaints.form.product.sub">Subscription / Billing</option>
+                <option value="other" data-i18n="complaints.form.product.other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="cf-group">
+              <label for="cf_subject" data-i18n="complaints.form.subject">Subject <span class="req">*</span></label>
+              <input type="text" id="cf_subject" name="cf_subject" required placeholder="Brief description of the issue">
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="cf-group">
+              <label for="cf_description" data-i18n="complaints.form.description">Detailed Description <span class="req">*</span></label>
+              <textarea id="cf_description" name="cf_description" required rows="6" placeholder="Please provide as much detail as possible: dates, order numbers, error messages, expected vs actual behavior, etc."></textarea>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="cf-group">
+              <label for="cf_resolution" data-i18n="complaints.form.resolution">Requested Resolution</label>
+              <textarea id="cf_resolution" name="cf_resolution" rows="3" placeholder="What outcome are you seeking?"></textarea>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <div class="form-submit-row">
+            <p class="form-submit-note" data-i18n="complaints.form.note">By submitting you agree to our Privacy Policy. You will receive a confirmation email within 2 business days.</p>
+            <button type="submit" class="btn-complaint-submit" id="cfSubmitBtn" data-i18n="complaints.form.submit">SUBMIT</button>
+          </div>
+
+          <div class="form-status" id="cfStatus"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="contact-strip">
+      <div>
+        <h3 data-i18n="complaints.contact.title">Need to speak with us directly?</h3>
+        <p data-i18n="complaints.contact.desc">Our support team is available to assist you before or after submitting a formal complaint.</p>
+      </div>
+      <a href="../index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+    </div>
+  </main>
+</div>
+
+<div class="color-separator"></div>
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__logo"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></div>
+        <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+        <div class="footer__social-min">
+          <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll"><i class="fab fa-instagram"></i></a>
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136"><i class="fab fa-facebook"></i></a>
+          <a target="_blank" href="https://x.com/grotix99540"><i class="fab fa-twitter"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.nav.title">Navigation</h3>
+        <ul class="footer__links">
+          <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+          <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+          <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.legal.title">Legal</h3>
+        <ul class="footer__links">
+          <li><a href="terms.html" data-i18n="footer.terms">Terms and Conditions</a></li>
+          <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="cookies.html" data-i18n="footer.cookies">Cookies Policy</a></li>
+          <li><a href="complaints.html" data-i18n="footer.complaints">Complaints Book</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.support.title">Support</h3>
+        <ul class="footer__links">
+          <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+          <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom"><p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<!-- EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ── I18N ────────────────────────────────────────────────────────────
+  const i18n = {
+    en: {
+      "nav.hero":"General","nav.services":"Services","nav.app":"App","nav.about":"Us","nav.contact":"Contact","hero.get":"GET NOW!",
+      "footer.tagline":"AI-Driven Precision Irrigation for Smarter Farming.",
+      "footer.nav.title":"Navigation","footer.legal.title":"Legal","footer.support.title":"Support",
+      "footer.terms":"Terms and Conditions","footer.privacy":"Privacy Policy",
+      "footer.cookies":"Cookies Policy","footer.complaints":"Complaints Book",
+      "footer.help":"Help","footer.faq":"Frequent Questions",
+      "footer.chvr":"© 2026 Grotix - Celevi. All rights reserved.",
+      "legal.back":"Back to site","legal.toc":"On this page",
+      "legal.updated":"Last updated: January 1, 2026",
+      "complaints.title":"Complaints Book",
+      "complaints.intro":"In accordance with Peruvian consumer protection regulations, Grotix — operated by Celevi S.A.C. — provides this Complaints Book so that users may formally register any complaint or claim regarding our products and services. We are committed to addressing every submission within the legally mandated timeframe.",
+      "complaints.s1.title":"What Is This",
+      "complaints.s1.p1":"The Complaints Book (Libro de Reclamaciones) is a mechanism required by Peruvian law (D.S. 011-2011-PCM and the Consumer Protection Code, Law No. 29571) through which any consumer may formally register a complaint or claim against a supplier of goods or services.",
+      "complaints.s1.p2":"A complaint refers to dissatisfaction with the service or product that is not related to a legal infringement. A claim refers to dissatisfaction directly associated with a product or service defect, non-compliance, or consumer rights violation.",
+      "complaints.s1.note":"Submitting a complaint or claim through this book does not limit your right to seek other legal remedies available under Peruvian consumer law, including filing a complaint with INDECOPI.",
+      "complaints.s2.title":"Your Rights",
+      "complaints.s2.p1":"As a consumer of Grotix products and services, you are entitled to:",
+      "complaints.s2.l1":"Receive a timely response to your submission within 30 calendar days.",
+      "complaints.s2.l2":"Be notified of the outcome and any corrective actions taken.",
+      "complaints.s2.l3":"Escalate unresolved complaints to INDECOPI (National Institute for the Defense of Competition and Intellectual Property) at any time.",
+      "complaints.s2.l4":"Request a copy of your submission and any correspondence at no cost.",
+      "complaints.s3.title":"Resolution Process",
+      "complaints.s3.p1":"Once your submission is received, Celevi will follow this process:",
+      "complaints.s3.l1":"Acknowledgment — You will receive an email confirmation with a unique reference number within 2 business days.",
+      "complaints.s3.l2":"Review — Our team will investigate the complaint or claim and may contact you for additional information.",
+      "complaints.s3.l3":"Resolution — A formal response with our findings and proposed resolution will be sent within 30 calendar days of submission.",
+      "complaints.s3.l4":"Follow-up — If you are unsatisfied with the resolution, you may escalate the matter to INDECOPI.",
+      "complaints.s3.note":"INDECOPI contact: www.indecopi.gob.pe — Phone: 224-7777 (Lima) / 0-800-4-4040 (free from landlines nationwide).",
+      "complaints.s4.title":"Submit a Complaint or Claim",
+      "complaints.s4.intro":"Complete the form below to register your submission. All fields marked with * are required.",
+      "complaints.form.section1":"Personal Information",
+      "complaints.form.name":"Full Name",
+      "complaints.form.email":"Email Address",
+      "complaints.form.phone":"Phone Number",
+      "complaints.form.docnum":"ID / DNI / Document No.",
+      "complaints.form.section2":"Submission Details",
+      "complaints.form.type":"Type",
+      "complaints.form.type.placeholder":"Select type...",
+      "complaints.form.type.complaint":"Complaint",
+      "complaints.form.type.claim":"Claim",
+      "complaints.form.product":"Product / Service",
+      "complaints.form.product.placeholder":"Select product...",
+      "complaints.form.product.hw":"Grotix Sensor Hardware",
+      "complaints.form.product.app":"Mobile Application",
+      "complaints.form.product.dash":"Web Dashboard",
+      "complaints.form.product.sub":"Subscription / Billing",
+      "complaints.form.product.other":"Other",
+      "complaints.form.subject":"Subject",
+      "complaints.form.description":"Detailed Description",
+      "complaints.form.resolution":"Requested Resolution",
+      "complaints.form.note":"By submitting you agree to our Privacy Policy. You will receive a confirmation email within 2 business days.",
+      "complaints.form.submit":"SUBMIT",
+      "complaints.form.sending":"SENDING...",
+      "complaints.form.success":"Your submission has been registered successfully. You will receive a confirmation email shortly.",
+      "complaints.form.error":"There was an error sending your submission. Please try again or contact us directly.",
+      "complaints.form.validation.required":"Please fill in all required fields.",
+      "complaints.form.validation.email":"Please enter a valid email address.",
+      "complaints.contact.title":"Need to speak with us directly?",
+      "complaints.contact.desc":"Our support team is available to assist you before or after submitting a formal complaint."
+    },
+    es: {
+      "nav.hero":"General","nav.services":"Servicios","nav.app":"App","nav.about":"Nosotros","nav.contact":"Contacto","hero.get":"¡OBTENER AHORA!",
+      "footer.tagline":"Irrigación de precisión con IA para una agricultura inteligente.",
+      "footer.nav.title":"Navegación","footer.legal.title":"Legal","footer.support.title":"Soporte",
+      "footer.terms":"Términos y Condiciones","footer.privacy":"Política de Privacidad",
+      "footer.cookies":"Política de Cookies","footer.complaints":"Libro de Reclamaciones",
+      "footer.help":"Ayuda","footer.faq":"Preguntas Frecuentes",
+      "footer.chvr":"© 2026 Grotix - Celevi. Todos los derechos reservados.",
+      "legal.back":"Volver al sitio","legal.toc":"En esta página",
+      "legal.updated":"Última actualización: 1 de enero de 2026",
+      "complaints.title":"Libro de Reclamaciones",
+      "complaints.intro":"De conformidad con la normativa peruana de protección al consumidor, Grotix — operado por Celevi S.A.C. — pone a disposición este Libro de Reclamaciones para que los usuarios puedan registrar formalmente cualquier queja o reclamo sobre nuestros productos y servicios. Nos comprometemos a atender cada envío dentro del plazo legalmente establecido.",
+      "complaints.s1.title":"¿Qué es esto?",
+      "complaints.s1.p1":"El Libro de Reclamaciones es un mecanismo exigido por la ley peruana (D.S. 011-2011-PCM y el Código de Protección al Consumidor, Ley N.° 29571) mediante el cual cualquier consumidor puede registrar formalmente una queja o reclamo contra un proveedor de bienes o servicios.",
+      "complaints.s1.p2":"Una queja hace referencia a la insatisfacción con el servicio o producto que no está relacionada con una infracción legal. Un reclamo hace referencia a la insatisfacción directamente asociada a un defecto del producto o servicio, incumplimiento o vulneración de derechos del consumidor.",
+      "complaints.s1.note":"La presentación de una queja o reclamo a través de este libro no limita tu derecho a ejercer otras acciones legales disponibles bajo la ley peruana de protección al consumidor, incluyendo la presentación de una denuncia ante INDECOPI.",
+      "complaints.s2.title":"Tus Derechos",
+      "complaints.s2.p1":"Como consumidor de los productos y servicios de Grotix, tienes derecho a:",
+      "complaints.s2.l1":"Recibir una respuesta oportuna a tu envío en un plazo de 30 días calendario.",
+      "complaints.s2.l2":"Ser notificado del resultado y de las medidas correctivas adoptadas.",
+      "complaints.s2.l3":"Elevar quejas no resueltas ante INDECOPI (Instituto Nacional de Defensa de la Competencia y de la Protección de la Propiedad Intelectual) en cualquier momento.",
+      "complaints.s2.l4":"Solicitar una copia de tu envío y de cualquier correspondencia sin costo alguno.",
+      "complaints.s3.title":"Proceso de Resolución",
+      "complaints.s3.p1":"Una vez recibido tu envío, Celevi seguirá este proceso:",
+      "complaints.s3.l1":"Acuse de recibo — Recibirás una confirmación por correo electrónico con un número de referencia único dentro de 2 días hábiles.",
+      "complaints.s3.l2":"Revisión — Nuestro equipo investigará la queja o reclamo y podrá contactarte para solicitar información adicional.",
+      "complaints.s3.l3":"Resolución — Se enviará una respuesta formal con nuestros hallazgos y la resolución propuesta dentro de los 30 días calendario posteriores al envío.",
+      "complaints.s3.l4":"Seguimiento — Si no estás satisfecho con la resolución, puedes elevar el asunto a INDECOPI.",
+      "complaints.s3.note":"Contacto INDECOPI: www.indecopi.gob.pe — Teléfono: 224-7777 (Lima) / 0-800-4-4040 (gratuito desde teléfonos fijos a nivel nacional).",
+      "complaints.s4.title":"Presenta una Queja o Reclamo",
+      "complaints.s4.intro":"Completa el formulario a continuación para registrar tu envío. Todos los campos marcados con * son obligatorios.",
+      "complaints.form.section1":"Información Personal",
+      "complaints.form.name":"Nombre Completo",
+      "complaints.form.email":"Correo Electrónico",
+      "complaints.form.phone":"Teléfono",
+      "complaints.form.docnum":"N.° de DNI / Documento",
+      "complaints.form.section2":"Detalles del Envío",
+      "complaints.form.type":"Tipo",
+      "complaints.form.type.placeholder":"Selecciona el tipo...",
+      "complaints.form.type.complaint":"Queja",
+      "complaints.form.type.claim":"Reclamo",
+      "complaints.form.product":"Producto / Servicio",
+      "complaints.form.product.placeholder":"Selecciona el producto...",
+      "complaints.form.product.hw":"Hardware de Sensores Grotix",
+      "complaints.form.product.app":"Aplicación Móvil",
+      "complaints.form.product.dash":"Panel Web",
+      "complaints.form.product.sub":"Suscripción / Facturación",
+      "complaints.form.product.other":"Otro",
+      "complaints.form.subject":"Asunto",
+      "complaints.form.description":"Descripción Detallada",
+      "complaints.form.resolution":"Resolución Solicitada",
+      "complaints.form.note":"Al enviar aceptas nuestra Política de Privacidad. Recibirás un correo de confirmación en un plazo de 2 días hábiles.",
+      "complaints.form.submit":"ENVIAR",
+      "complaints.form.sending":"ENVIANDO...",
+      "complaints.form.success":"Tu envío ha sido registrado con éxito. Recibirás un correo de confirmación en breve.",
+      "complaints.form.error":"Hubo un error al enviar tu envío. Por favor inténtalo de nuevo o contáctanos directamente.",
+      "complaints.form.validation.required":"Por favor completa todos los campos obligatorios.",
+      "complaints.form.validation.email":"Por favor ingresa una dirección de correo válida.",
+      "complaints.contact.title":"¿Necesitas hablar con nosotros directamente?",
+      "complaints.contact.desc":"Nuestro equipo de soporte está disponible para asistirte antes o después de presentar una queja formal."
+    }
+  };
+
+  let currentLanguage = 'en';
+
+  const translatePage = (lang) => {
+    document.querySelectorAll('.language-btn').forEach(b =>
+            b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false')
+    );
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (i18n[lang]?.[k]) el.textContent = i18n[lang][k];
+    });
+    localStorage.setItem('grotix-language', lang);
+    currentLanguage = lang;
+  };
+
+  // ── INIT ─────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('grotix-language');
+    translatePage(saved || (navigator.language.startsWith('es') ? 'es' : 'en'));
+
+    document.querySelectorAll('.language-btn').forEach(b =>
+            b.addEventListener('click', () => translatePage(b.dataset.lang))
+    );
+
+    // Sidebar scroll spy
+    const sections = document.querySelectorAll('.legal-section, .complaints-form-section');
+    const links = document.querySelectorAll('.sidebar-nav a');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => obs.observe(s));
+
+    // ── EMAILJS ──────────────────────────────────────────────────────
+    emailjs.init("jQdfs7rmrZ5zzAZTr");
+
+    const form = document.getElementById('complaintsForm');
+    const submitBtn = document.getElementById('cfSubmitBtn');
+    const statusEl = document.getElementById('cfStatus');
+
+    const showStatus = (type, msg) => {
+      statusEl.className = 'form-status ' + type;
+      statusEl.innerHTML = type === 'success'
+              ? `<i class="fas fa-check-circle"></i> ${msg}`
+              : `<i class="fas fa-exclamation-circle"></i> ${msg}`;
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const t = i18n[currentLanguage];
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\d{9}$/;
+      const dniRegex = /^\d{8}$/;
+
+      const name        = form.cf_name.value.trim();
+      const email       = form.cf_email.value.trim();
+      const phone       = form.cf_phone.value.trim();
+      const docnum      = form.cf_docnum.value.trim();
+      const type        = form.cf_type.value;
+      const product     = form.cf_product.value;
+      const subject     = form.cf_subject.value.trim();
+      const description = form.cf_description.value.trim();
+
+      // Required field validation
+      if (!name || !email || !docnum || !type || !product || !subject || !description) {
+        showStatus('error', t['complaints.form.validation.required']);
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        showStatus('error', t['complaints.form.validation.email']);
+        return;
+      }
+      if (phone && !phoneRegex.test(phone)) {
+        showStatus(
+                'error',
+                currentLanguage === 'es'
+                        ? 'El número de celular debe tener exactamente 9 dígitos.'
+                        : 'Phone number must contain exactly 9 digits.'
+        );
+        return;
+      }
+
+      if (!dniRegex.test(docnum)) {
+        showStatus(
+                'error',
+                currentLanguage === 'es'
+                        ? 'El DNI debe tener exactamente 8 dígitos.'
+                        : 'Document number must contain exactly 8 digits.'
+        );
+        return;
+      }
+
+      // UI feedback
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = t['complaints.form.sending'];
+      submitBtn.disabled = true;
+      statusEl.className = 'form-status';
+
+      const serviceID  = 'service_57il3l9';
+      const templateID = 'template_hy3nsmu';
+
+      emailjs.sendForm(serviceID, templateID, form)
+              .then(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                showStatus('success', t['complaints.form.success']);
+                form.reset();
+              }, (err) => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                showStatus('error', t['complaints.form.error'] + ' (' + JSON.stringify(err) + ')');
+              });
+    });
+  });
+</script>
 </body>
 </html>

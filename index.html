@@ -211,34 +211,62 @@
 <section class="contact" id="contact">
     <div class="contact__container">
         <div class="cursor-glow"></div>
+
         <div class="contact__left">
             <div class="contact__card-stack">
                 <div class="contact__card-bg"></div>
-                <form class="contact__form">
-                    <div class="form__group">
-                        <label for="name" data-i18n="contact.name">Name</label>
-                        <input type="text" id="name" name="name" required>
+
+                <form class="contact__form" id="contactForm" novalidate>
+
+                    <p class="form-section-label" data-i18n="contact.form.label">Get in Touch</p>
+
+                    <div class="form-row">
+                        <div class="cf-group">
+                            <label for="name" data-i18n="contact.name">Name <span class="req">*</span></label>
+                            <input type="text" id="name" name="name" required
+                                   data-placeholder-i18n="contact.name.placeholder" placeholder="Jane Doe">
+                        </div>
+                        <div class="cf-group">
+                            <label for="email" data-i18n="contact.email">Email <span class="req">*</span></label>
+                            <input type="email" id="email" name="email" required
+                                   data-placeholder-i18n="contact.email.placeholder" placeholder="jane@farm.com">
+                        </div>
                     </div>
-                    <div class="form__group">
-                        <label for="email" data-i18n="contact.email">Email</label>
-                        <input type="email" id="email" name="email" required>
+
+                    <div class="form-row full">
+                        <div class="cf-group">
+                            <label for="subject" data-i18n="contact.subject">Subject <span class="req">*</span></label>
+                            <input type="text" id="subject" name="subject" required
+                                   data-placeholder-i18n="contact.subject.placeholder" placeholder="What's on your mind?">
+                        </div>
                     </div>
-                    <div class="form__group">
-                        <label for="subject" data-i18n="contact.subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
+
+                    <div class="form-divider"></div>
+
+                    <div class="form-row full">
+                        <div class="cf-group">
+                            <label for="message" data-i18n="contact.message">Message <span class="req">*</span></label>
+                            <textarea id="message" name="message" rows="5" required
+                                      data-placeholder-i18n="contact.message.placeholder"
+                                      placeholder="Tell us about your project, questions, or ideas..."></textarea>
+                        </div>
                     </div>
-                    <div class="form__group">
-                        <label for="message" data-i18n="contact.message">Message</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <div class="form-submit-row">
+                        <p class="form-submit-note" data-i18n="contact.form.note">We'll get back to you within 2 business days.</p>
+                        <button type="submit" class="btn__send" id="contactSendBtn" data-i18n="contact.send">SEND</button>
                     </div>
-                    <button type="submit" class="btn__send">SEND</button>
+
+                    <div class="form-status" id="contactStatus"></div>
+
                 </form>
             </div>
         </div>
+
         <div class="contact__right">
             <div class="contact__right-info">
                 <h1 data-i18n="contact.title">Let's grow the future together</h1>
-                <p data-i18n="contact.description">Have questions about our IoT sensors or the Grotix platform? Whether you are a solo producer or represent a large association, we’re ready to answer your technical and commercial inquiries.</p>
+                <p data-i18n="contact.description">Have questions about our IoT sensors or the Grotix platform? Whether you are a solo producer or represent a large association, we're ready to answer your technical and commercial inquiries.</p>
             </div>
         </div>
     </div>
