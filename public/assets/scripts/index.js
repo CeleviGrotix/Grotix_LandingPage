@@ -93,33 +93,28 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
 });
 
-//CURSOR FOLLOWING
+// --- CURSOR FOLLOWING  ---
 document.addEventListener('DOMContentLoaded', () => {
     const section = document.querySelector('.contact');
+    if (!section) return;
+
     const glow = section.querySelector('.cursor-glow');
+    if (!glow) return;
 
-    let x = 0;
-    let y = 0;
-
+    let x = 0, y = 0;
     section.addEventListener('mousemove', (e) => {
         const rect = section.getBoundingClientRect();
-
         x = e.clientX - rect.left;
         y = e.clientY - rect.top;
     });
 
-    let currentX = 0;
-    let currentY = 0;
-
+    let currentX = 0, currentY = 0;
     function animate() {
-        currentX += (x - currentX) * 0.5;
-        currentY += (y - currentY) * 0.5;
-
+        currentX += (x - currentX) * 0.15;
+        currentY += (y - currentY) * 0.15;
         glow.style.left = currentX + 'px';
         glow.style.top = currentY + 'px';
-
         requestAnimationFrame(animate);
     }
-
     animate();
 });

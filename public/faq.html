@@ -2,9 +2,554 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Grotix – FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grotix Frequently Asked Questions.">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/components/variables.css">
+    <link rel="stylesheet" href="assets/styles/index.css"> <!-- Main CSS -->
+
+    <style>
+        /* ── PAGE HERO ── */
+        .page-hero {
+            padding: 160px 80px 80px; position: relative; overflow: hidden;
+        }
+        .page-hero::before {
+            content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120%; height: 100%;
+            background: radial-gradient(ellipse at top center, rgba(64,191,226,0.18) 0%, transparent 65%);
+            pointer-events: none; z-index: 0;
+        }
+        .page-hero__inner { position: relative; z-index: 1; max-width: 860px; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+        .breadcrumb a { color: var(--color-ceruleanblue); text-decoration: none; transition: opacity 0.2s; }
+        .breadcrumb a:hover { opacity: 0.75; }
+        .breadcrumb i { font-size: 0.7rem; }
+        .page-hero__tag { display: inline-block; margin-bottom: 20px; background: rgba(64,191,226,0.12); border: 1px solid rgba(64,191,226,0.35); color: var(--color-ceruleanblue); border-radius: 40px; padding: 6px 20px; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        .page-hero__title { font-size: 4rem; font-weight: 700; line-height: 1.1; background: linear-gradient(120deg, var(--color-white) 0%, var(--color-ceruleanblue) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 24px; }
+        .page-hero__sub { font-size: 1.25rem; color: rgba(255,255,255,0.6); max-width: 560px; }
+
+        /* ── LAYOUT ── */
+        .faq-layout {
+            display: flex; gap: 60px;
+            padding: 0 80px 120px;
+            align-items: flex-start;
+        }
+        .faq-sidebar { width: 220px; flex-shrink: 0; position: sticky; top: 100px; }
+        .faq-sidebar__label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+        .faq-sidebar__nav { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .faq-sidebar__nav a {
+            display: block; text-decoration: none; font-size: 0.95rem;
+            color: rgba(255,255,255,0.5); padding: 8px 14px; border-radius: 10px;
+            transition: all 0.2s; border: 1px solid transparent;
+        }
+        .faq-sidebar__nav a:hover, .faq-sidebar__nav a.active {
+            color: var(--color-ceruleanblue); border-color: rgba(64,191,226,0.25);
+            background: rgba(64,191,226,0.07);
+        }
+
+        .faq-main { flex: 1; min-width: 0; }
+
+        /* ── SEARCH ── */
+        .search-box {
+            display: flex; align-items: center; gap: 16px;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px; padding: 14px 22px; margin-bottom: 60px;
+            transition: border-color 0.3s;
+        }
+        .search-box:focus-within { border-color: var(--color-ceruleanblue); }
+        .search-box i { color: var(--color-ceruleanblue); font-size: 1rem; }
+        .search-box input { background: none; border: none; color: var(--color-white); font-family: var(--font-unique); font-size: 1rem; flex: 1; }
+        .search-box input::placeholder { color: rgba(255,255,255,0.3); }
+
+        /* ── FAQ GROUPS ── */
+        .faq-group { margin-bottom: 64px; scroll-margin-top: 100px; }
+        .faq-group__header {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 28px; padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .faq-group__icon {
+            width: 40px; height: 40px; border-radius: 12px;
+            background: rgba(64,191,226,0.12); border: 1px solid rgba(64,191,226,0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-ceruleanblue); font-size: 1rem; flex-shrink: 0;
+        }
+        .faq-group__title { font-size: 1.5rem; font-weight: 600; }
+
+        /* ── ACCORDION ── */
+        .accordion { display: flex; flex-direction: column; gap: 12px; }
+        .accordion-item {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px; overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .accordion-item.open { border-color: rgba(64,191,226,0.3); }
+        .accordion-item.hidden { display: none; }
+        .accordion-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 22px 28px; cursor: pointer;
+            user-select: none;
+        }
+        .accordion-header:hover .accordion-q { color: var(--color-ceruleanblue); }
+        .accordion-q { font-size: 1.05rem; font-weight: 500; transition: color 0.2s; flex: 1; padding-right: 20px; }
+        .accordion-icon {
+            width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; color: rgba(255,255,255,0.5);
+            transition: transform 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .accordion-item.open .accordion-icon {
+            transform: rotate(45deg); border-color: var(--color-ceruleanblue); color: var(--color-ceruleanblue);
+        }
+        .accordion-body {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+            padding: 0 28px;
+        }
+        .accordion-item.open .accordion-body {
+            max-height: 600px; padding: 0 28px 24px;
+        }
+        .accordion-body p { font-size: 0.98rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+        /* ── CONTACT STRIP ── */
+        .contact-strip {
+            background: rgba(64,191,226,0.07); border: 1px solid rgba(64,191,226,0.2);
+            border-radius: 24px; padding: 48px 56px;
+            display: flex; justify-content: space-between; align-items: center; gap: 32px;
+            margin-top: 40px;
+        }
+        .contact-strip h3 { font-size: 1.8rem; margin-bottom: 8px; }
+        .contact-strip p { color: rgba(255,255,255,0.55); font-size: 1rem; }
+        .contact-strip__btns { display: flex; gap: 16px; flex-shrink: 0; }
+        .btn-outline { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; border: 1px solid var(--color-ceruleanblue); color: var(--color-ceruleanblue); transition: background 0.3s, color 0.3s; }
+        .btn-outline:hover { background: var(--color-ceruleanblue); color: #000; }
+        .btn-solid { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; background: var(--color-ceruleanblue); color: #000; border: 1px solid var(--color-ceruleanblue); transition: opacity 0.3s; }
+        .btn-solid:hover { opacity: 0.8; }
+
+        /* ── SEPARATOR & FOOTER ── */
+        .color-separator { width: 100%; height: 24px; margin: 10px 0; background-image: radial-gradient(circle at 12px center, var(--color-grassgreen) 0 8px, transparent 9px), radial-gradient(circle at 36px center, var(--color-ceruleanblue) 0 8px, transparent 9px), radial-gradient(circle at 60px center, var(--color-coralred) 0 8px, transparent 9px), radial-gradient(circle at 84px center, var(--color-lightgray) 0 8px, transparent 9px); background-size: 96px 24px; background-repeat: repeat-x; }
+        .footer { background: #080808; padding: 80px 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer__col h3 { color: var(--color-ceruleanblue); margin-bottom: 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer__tagline { margin: 20px 0; font-size: 0.95rem; color: #888; }
+        .footer__links { list-style: none; }
+        .footer__links li { margin-bottom: 12px; }
+        .footer__links a { text-decoration: none; color: var(--color-lightgray); font-size: 0.9rem; transition: color 0.2s; }
+        .footer__links a:hover { color: var(--color-coralred); }
+        .footer__social-min { display: flex; gap: 15px; font-size: 1.2rem; }
+        .footer__social-min a { color: var(--color-white); }
+        .footer__logo img { height: 4vh; width: auto; min-height: 40px; min-width: 100px; }
+        .footer__bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .faq-sidebar { display: none; }
+            .contact-strip { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 768px) {
+            .page-hero { padding: 140px 24px 60px; }
+            .faq-layout { padding: 0 24px 80px; }
+            .header { padding: 16px 20px; }
+            .header__nav-list { gap: 16px; }
+            .header__nav-link { font-size: 0.9rem; }
+            .footer__grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
 <body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="grotix__logo">
+        <a href="../index.html"><img src="assets/images/logo/logo.png" alt="Grotix Logo"></a>
+    </div>
+    <nav class="header__nav" aria-label="Main Navigation">
+        <ul class="header__nav-list">
+            <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+            <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+            <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+            <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+        </ul>
+    </nav>
+    <div class="header__language-selector">
+        <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero__inner">
+        <div class="breadcrumb">
+            <a href="../index.html" data-i18n="nav.hero">General</a>
+            <i class="fas fa-chevron-right"></i>
+            <span data-i18n="faq.breadcrumb">FAQ</span>
+        </div>
+        <span class="page-hero__tag" data-i18n="faq.tag">Frequent Questions</span>
+        <h1 class="page-hero__title" data-i18n="faq.title">Answers at a glance</h1>
+        <p class="page-hero__sub" data-i18n="faq.subtitle">
+            The most common questions about Grotix, all in one place.
+        </p>
+    </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="faq-layout">
+
+    <!-- Sidebar -->
+    <aside class="faq-sidebar">
+        <p class="faq-sidebar__label" data-i18n="faq.sidebar.label">Categories</p>
+        <ul class="faq-sidebar__nav">
+            <li><a href="#general" class="active" data-i18n="faq.cat.general">General</a></li>
+            <li><a href="#hardware" data-i18n="faq.cat.hardware">Hardware</a></li>
+            <li><a href="#app" data-i18n="faq.cat.app">App</a></li>
+            <li><a href="#irrigation" data-i18n="faq.cat.irrigation">Irrigation</a></li>
+            <li><a href="#privacy" data-i18n="faq.cat.privacy">Privacy & Data</a></li>
+            <li><a href="#billing" data-i18n="faq.cat.billing">Billing</a></li>
+        </ul>
+    </aside>
+
+    <!-- FAQ Main -->
+    <main class="faq-main">
+
+        <!-- Search -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="faqSearch" data-placeholder-i18n="faq.search.placeholder" placeholder="Filter questions…" autocomplete="off">
+        </div>
+
+        <!-- Group: General -->
+        <div class="faq-group" id="general">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-info-circle"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.general">General</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="grotix what is platform agriculture">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.g1.q">What is Grotix?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.g1.a">Grotix is an AI-driven precision irrigation platform developed by Celevi. It combines IoT sensors, machine vision and a mobile/web dashboard to help farmers optimize water use and improve crop health.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="who can use farm producer association">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.g2.q">Who is Grotix designed for?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.g2.a">Grotix is designed for individual producers, smallholder farms and larger agricultural associations. The platform scales from a single sensor node to a multi-field network.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="countries regions available supported">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.g3.q">Where is Grotix available?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.g3.a">Grotix is currently available across Latin America, with priority support in Peru. We are expanding to further regions — contact us to check availability in your area.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group: Hardware -->
+        <div class="faq-group" id="hardware">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-microchip"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.hardware">Hardware</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="sensor node setup install power wifi">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.h1.q">What does the Grotix sensor kit include?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.h1.a">Each kit includes a microcontroller node with integrated machine-vision module, a soil-moisture probe, an ambient temperature/humidity sensor, a sunlight sensor, a water pump controller and the necessary mounting hardware.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="wifi internet connection requirement connectivity">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.h2.q">Does Grotix require constant internet connectivity?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.h2.a">Connectivity is needed to sync telemetry data to the dashboard and to use remote irrigation control. However, the on-device logic continues to operate autonomously during brief connectivity losses, buffering data until the connection is restored.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="power supply energy solar battery">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.h3.q">Can the device run on solar power?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.h3.a">Yes. Grotix sensor nodes support 5 V input via USB-C. A compatible solar panel with a battery management module can be used to power the device off-grid. Contact us for recommended third-party solar accessories.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="waterproof weather outdoor rain resistant">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.h4.q">Is the hardware weatherproof?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.h4.a">The enclosure is rated IP65, making it dustproof and protected against water jets. It is suitable for outdoor field deployment in most weather conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group: App -->
+        <div class="faq-group" id="app">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-mobile-alt"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.app">App</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="download android ios google play app store mobile">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.a1.q">Where can I download the Grotix app?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.a1.a">The app is available on Google Play for Android devices and the App Store for iOS. Search for "Grotix" or use the download buttons on our website.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="multiple devices fields accounts manage">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.a2.q">Can I manage multiple fields from one account?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.a2.a">Yes. A single Grotix account can be linked to multiple sensor nodes and fields. You can switch between fields within the app and view each field's telemetry and irrigation logs independently.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="notifications alerts push warning">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.a3.q">Does the app send alerts or push notifications?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.a3.a">Yes. You can configure threshold-based alerts for soil moisture, ambient temperature and humidity. Push notifications are sent when values fall outside your defined ranges or when the pump activates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group: Irrigation -->
+        <div class="faq-group" id="irrigation">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-tint"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.irrigation">Irrigation</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="automatic irrigation ai schedule frequency">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.i1.q">How does automatic irrigation work?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.i1.a">The system continuously reads soil moisture, temperature, humidity and sunlight. When conditions indicate the plant needs water, the irrigation logic triggers the pump for a duration calculated from the crop's metabolic profile. No user action is required.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="manual irrigation remote control app pump">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.i2.q">Can I water my crops manually from the app?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.i2.a">Yes. The app includes a manual irrigation button that triggers the pump immediately regardless of sensor conditions. You can also set a custom duration for the manual cycle.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="water saving efficiency reduce usage amount">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.i3.q">How much water can Grotix save?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.i3.a">Results vary by crop and region, but early pilots showed water reduction of up to 35% compared to traditional fixed-schedule irrigation. The dashboard provides water-saving reports so you can track your own impact over time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group: Privacy -->
+        <div class="faq-group" id="privacy">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.privacy">Privacy & Data</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="data privacy store cloud secure personal">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.p1.q">Where is my sensor data stored?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.p1.a">Sensor telemetry is encrypted in transit and stored on secure cloud servers. You retain ownership of your data and can export or delete it at any time from your account settings.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="camera image recognition privacy share">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.p2.q">Are images from the crop camera shared with third parties?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.p2.a">No. Images are processed locally on the device for crop identification. Only aggregated, anonymized data may be used to improve model accuracy. No raw images are shared with third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group: Billing -->
+        <div class="faq-group" id="billing">
+            <div class="faq-group__header">
+                <div class="faq-group__icon"><i class="fas fa-credit-card"></i></div>
+                <h2 class="faq-group__title" data-i18n="faq.cat.billing">Billing</h2>
+            </div>
+            <div class="accordion">
+                <div class="accordion-item" data-tags="price cost plan subscription how much">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.b1.q">How much does Grotix cost?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.b1.a">Grotix is sold as a hardware kit with an optional subscription for advanced analytics, multi-field management and priority support. Contact us through the website for current pricing in your region.</p>
+                    </div>
+                </div>
+                <div class="accordion-item" data-tags="refund return cancel policy guarantee">
+                    <div class="accordion-header">
+                        <span class="accordion-q" data-i18n="faq.b2.q">What is your return and refund policy?</span>
+                        <div class="accordion-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p data-i18n="faq.b2.a">We offer a 30-day satisfaction guarantee on hardware. If your device has a manufacturing defect or you are not satisfied within the first 30 days, contact us and we will arrange a return or replacement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Strip -->
+        <div class="contact-strip">
+            <div>
+                <h3 data-i18n="faq.contact.title">Didn't find your answer?</h3>
+                <p data-i18n="faq.contact.desc">Reach out to our team and we'll get back to you as soon as possible.</p>
+            </div>
+            <div class="contact-strip__btns">
+                <a href="help.html" class="btn-outline" data-i18n="footer.help">Help Center</a>
+                <a href="../index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<div class="color-separator"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <div class="footer__logo">
+                    <img src="public/assets/images/logo/b&w.png" alt="Grotix Logo">
+                </div>
+                <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+                <div class="footer__social-min">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.nav.title">Navigation</h3>
+                <ul class="footer__links">
+                    <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+                    <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+                    <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.legal.title">Legal</h3>
+                <ul class="footer__links">
+                    <li><a href="#" data-i18n="footer.terms">Terms and Conditions</a></li>
+                    <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="footer.cookies">Cookies Policy</a></li>
+                    <li><a href="#" data-i18n="footer.complaints">Complaints Book</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.support.title">Support</h3>
+                <ul class="footer__links">
+                    <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+                    <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="assets/scripts/i18n.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Accordion
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.closest('.accordion-item');
+                const isOpen = item.classList.contains('open');
+                // Close siblings
+                item.closest('.accordion').querySelectorAll('.accordion-item.open').forEach(el => el.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // Search / filter
+        const searchInput = document.getElementById('faqSearch');
+        const items = document.querySelectorAll('.accordion-item');
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.toLowerCase().trim();
+            items.forEach(item => {
+                const tags = item.dataset.tags || '';
+                const qEl = item.querySelector('.accordion-q');
+                const aEl = item.querySelector('.accordion-body p');
+                const text = ((qEl?.textContent || '') + ' ' + (aEl?.textContent || '') + ' ' + tags).toLowerCase();
+                item.classList.toggle('hidden', !!q && !text.includes(q));
+            });
+        });
+
+        // Sidebar active on scroll
+        const groups = document.querySelectorAll('.faq-group');
+        const sideLinks = document.querySelectorAll('.faq-sidebar__nav a');
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sideLinks.forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        groups.forEach(g => obs.observe(g));
+    });
+</script>
 
 </body>
 </html>

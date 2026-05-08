@@ -2,9 +2,235 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Grotix – Help</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Grotix Help Center – everything you need to get started.">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32" />
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+
+    <!-- STYLES -->
+    <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/> <!-- Normalize CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/components/variables.css"> <!-- CSS Variables -->
+    <link rel="stylesheet" href="assets/styles/index.css"> <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/styles/help.css"> <!-- Help CSS -->
 </head>
 <body>
+<!-- HEADER -->
+<header class="header">
+    <div class="grotix__logo">
+        <a href="../index.html"><img src="assets/images/logo/logo.png" alt="Grotix Logo"></a>
+    </div>
+    <nav class="header__nav" aria-label="Main Navigation">
+        <ul class="header__nav-list">
+            <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+            <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+            <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+            <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+            <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+            <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+        </ul>
+    </nav>
+    <div class="header__language-selector">
+        <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+</header>
 
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="page-hero__inner">
+        <div class="breadcrumb">
+            <a href="../index.html" data-i18n="nav.hero">General</a>
+            <i class="fas fa-chevron-right"></i>
+            <span data-i18n="help.breadcrumb">Help</span>
+        </div>
+        <span class="page-hero__tag" data-i18n="help.tag">Help Center</span>
+        <h1 class="page-hero__title" data-i18n="help.title">How can we help you?</h1>
+        <p class="page-hero__sub" data-i18n="help.subtitle">
+            Everything you need to set up, use and get the most out of Grotix.
+        </p>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="helpSearch" data-placeholder-i18n="help.search.placeholder" placeholder="Search articles…" autocomplete="off">
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="help-content">
+
+    <!-- Topic Cards -->
+    <p class="section-label" data-i18n="help.topics.label">Topics</p>
+    <div class="cards-grid" id="topicCards">
+
+        <div class="help-card" data-tags="setup hardware install device">
+            <div class="help-card__icon"><i class="fas fa-microchip"></i></div>
+            <p class="help-card__title" data-i18n="help.card1.title">Device Setup</p>
+            <p class="help-card__desc" data-i18n="help.card1.desc">Connect your Grotix sensor kit to power and Wi-Fi in minutes.</p>
+        </div>
+
+        <div class="help-card" data-tags="app mobile download android ios">
+            <div class="help-card__icon"><i class="fas fa-mobile-alt"></i></div>
+            <p class="help-card__title" data-i18n="help.card2.title">Mobile App</p>
+            <p class="help-card__desc" data-i18n="help.card2.desc">Download, log in and pair the app with your field device.</p>
+        </div>
+
+        <div class="help-card" data-tags="sensor calibration data humidity temperature moisture">
+            <div class="help-card__icon"><i class="fas fa-temperature-high"></i></div>
+            <p class="help-card__title" data-i18n="help.card3.title">Sensors & Calibration</p>
+            <p class="help-card__desc" data-i18n="help.card3.desc">Calibrate humidity, temperature and soil-moisture readings for accuracy.</p>
+        </div>
+
+        <div class="help-card" data-tags="irrigation pump automatic manual control">
+            <div class="help-card__icon"><i class="fas fa-tint"></i></div>
+            <p class="help-card__title" data-i18n="help.card4.title">Irrigation Control</p>
+            <p class="help-card__desc" data-i18n="help.card4.desc">Configure automatic schedules or trigger manual watering remotely.</p>
+        </div>
+
+        <div class="help-card" data-tags="crop identification ai camera plant recognition">
+            <div class="help-card__icon"><i class="fas fa-seedling"></i></div>
+            <p class="help-card__title" data-i18n="help.card5.title">Crop Identification</p>
+            <p class="help-card__desc" data-i18n="help.card5.desc">Let AI recognize your plants automatically or set them up manually.</p>
+        </div>
+
+        <div class="help-card" data-tags="account profile billing subscription plan">
+            <div class="help-card__icon"><i class="fas fa-user-circle"></i></div>
+            <p class="help-card__title" data-i18n="help.card6.title">Account & Billing</p>
+            <p class="help-card__desc" data-i18n="help.card6.desc">Manage your profile, plan and payment information.</p>
+        </div>
+
+    </div>
+
+    <!-- Getting Started Steps -->
+    <div class="guide-section">
+        <p class="section-label" data-i18n="help.started.label">Getting started</p>
+        <h2 data-i18n="help.started.title">Set up Grotix in 4 steps</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step__num">1</div>
+                <div class="step__body">
+                    <p class="step__title" data-i18n="help.step1.title">Unbox and connect the hardware</p>
+                    <p class="step__desc" data-i18n="help.step1.desc">Place the sensor node in your field, connect the power supply and attach the soil-moisture probe to the designated port.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step__num">2</div>
+                <div class="step__body">
+                    <p class="step__title" data-i18n="help.step2.title">Download the Grotix app</p>
+                    <p class="step__desc" data-i18n="help.step2.desc">Available on Google Play and the App Store. Create your account or log in if you already have one.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step__num">3</div>
+                <div class="step__body">
+                    <p class="step__title" data-i18n="help.step3.title">Pair device via Wi-Fi</p>
+                    <p class="step__desc" data-i18n="help.step3.desc">Open the app, tap "Add Device" and follow the on-screen instructions to connect your Grotix node to your local network.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step__num">4</div>
+                <div class="step__body">
+                    <p class="step__title" data-i18n="help.step4.title">Configure your crops and start monitoring</p>
+                    <p class="step__desc" data-i18n="help.step4.desc">Point the camera at your plants for automatic AI identification, or choose your crop type manually. Grotix will handle the rest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Strip -->
+    <div class="contact-strip">
+        <div>
+            <h3 data-i18n="help.contact.title">Still need help?</h3>
+            <p data-i18n="help.contact.desc">Our team is ready to answer your technical and commercial inquiries.</p>
+        </div>
+        <div class="contact-strip__btns">
+            <a href="faq.html" class="btn-outline" data-i18n="footer.faq">Frequent Questions</a>
+            <a href="../index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+        </div>
+    </div>
+
+</main>
+
+<div class="color-separator"></div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <div class="footer__logo">
+                    <img src="public/assets/images/logo/b&w.png" alt="Grotix Logo">
+                </div>
+                <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+                <div class="footer__social-min">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.nav.title">Navigation</h3>
+                <ul class="footer__links">
+                    <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+                    <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+                    <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.legal.title">Legal</h3>
+                <ul class="footer__links">
+                    <li><a href="#" data-i18n="footer.terms">Terms and Conditions</a></li>
+                    <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="footer.cookies">Cookies Policy</a></li>
+                    <li><a href="#" data-i18n="footer.complaints">Complaints Book</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3 data-i18n="footer.support.title">Support</h3>
+                <ul class="footer__links">
+                    <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+                    <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+                    <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="assets/scripts/i18n.js"></script>
+<script>
+    const searchInput = document.getElementById('helpSearch');
+    const cards = document.querySelectorAll('#topicCards .help-card');
+    searchInput.addEventListener('input', () => {
+        const q = searchInput.value.toLowerCase().trim();
+        cards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        const title = card.querySelector('[data-i18n]')?.textContent.toLowerCase() || '';
+        const desc = card.querySelectorAll('[data-i18n]')[1]?.textContent.toLowerCase() || '';
+        const match = !q || tags.includes(q) || title.includes(q) || desc.includes(q);
+        card.classList.toggle('hidden', !match);
+        });
+    });
+</script>
 </body>
 </html>
