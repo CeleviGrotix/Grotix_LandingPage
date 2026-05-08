@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grotix – Privacy Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo/simpleIco.ico" sizes="32x32"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/components/variables.css">
+  <link rel="stylesheet" href="assets/styles/index.css">
+  <style>
+    /* LAYOUT */
+    .legal-wrap { display: flex; gap: 0; padding-top: 80px; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .legal-sidebar { width: 280px; flex-shrink: 0; padding: 60px 32px; border-right: 1px solid rgba(255,255,255,0.06); position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .sidebar-back { display: flex; align-items: center; gap: 8px; text-decoration: none; color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 32px; transition: color 0.2s; }
+    .sidebar-back:hover { color: var(--color-ceruleanblue); }
+    .sidebar-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav a { display: block; text-decoration: none; font-size: 0.9rem; color: rgba(255,255,255,0.45); padding: 8px 12px; border-radius: 10px; border-left: 2px solid transparent; transition: all 0.2s; }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--color-ceruleanblue); border-left-color: var(--color-ceruleanblue); background: rgba(64,191,226,0.06); }
+    .legal-links { margin-top: 40px; display: flex; flex-direction: column; gap: 8px; }
+    .legal-link-item { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.85rem; color: rgba(255,255,255,0.35); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color 0.2s; }
+    .legal-link-item:hover { color: var(--color-ceruleanblue); }
+    .legal-link-item i { font-size: 0.75rem; }
+
+    /* MAIN */
+    .legal-main { flex: 1; padding: 60px 80px 120px 80px; max-width: 80vw; }
+    .doc-meta { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .doc-badge { display: inline-block; background: rgba(64,191,226,0.12); border: 1px solid rgba(64,191,226,0.3); color: var(--color-ceruleanblue); border-radius: 40px; padding: 5px 18px; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+    .doc-date { font-size: 0.85rem; color: rgba(255,255,255,0.35); }
+    .doc-title { font-size: 3rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px; background: linear-gradient(120deg, var(--color-white) 0%, var(--color-ceruleanblue) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .doc-intro { font-size: 1.1rem; color: rgba(255,255,255,0.55); margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* SECTIONS */
+    .legal-section { margin-bottom: 56px; scroll-margin-top: 100px; }
+    .section-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-ceruleanblue); margin-bottom: 12px; }
+    .legal-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: var(--color-white); }
+    .legal-section p { font-size: 0.98rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+    .legal-section ul { list-style: none; margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+    .legal-section ul li { font-size: 0.98rem; color: rgba(255,255,255,0.6); padding-left: 20px; position: relative; }
+    .legal-section ul li::before { content: "→"; position: absolute; left: 0; color: var(--color-ceruleanblue); font-size: 0.8rem; top: 2px; }
+    .highlight-box { background: rgba(64,191,226,0.06); border: 1px solid rgba(64,191,226,0.2); border-radius: 14px; padding: 20px 24px; margin: 20px 0; }
+    .highlight-box p { margin: 0; font-size: 0.92rem; }
+
+    /* DATA TABLE */
+    .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.92rem; }
+    .data-table th { text-align: left; padding: 12px 16px; background: rgba(64,191,226,0.08); color: var(--color-ceruleanblue); font-weight: 600; border-bottom: 1px solid rgba(64,191,226,0.2); }
+    .data-table td { padding: 12px 16px; color: rgba(255,255,255,0.6); border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* CONTACT STRIP */
+    .contact-strip { background: rgba(64,191,226,0.07); border: 1px solid rgba(64,191,226,0.2); border-radius: 24px; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 60px; }
+    .contact-strip h3 { font-size: 1.4rem; margin-bottom: 6px; }
+    .contact-strip p { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+    .btn-solid { text-decoration: none; font-family: var(--font-unique); font-size: 0.95rem; padding: 12px 28px; border-radius: 12px; font-weight: 600; background: var(--color-ceruleanblue); color: #000; transition: opacity 0.3s; flex-shrink: 0; }
+    .btn-solid:hover { opacity: 0.8; }
+
+    /* COLOR SEPARATOR & FOOTER */
+    .color-separator { width: 100%; height: 24px; margin: 10px 0; background-image: radial-gradient(circle at 12px center, var(--color-grassgreen) 0 8px, transparent 9px), radial-gradient(circle at 36px center, var(--color-ceruleanblue) 0 8px, transparent 9px), radial-gradient(circle at 60px center, var(--color-coralred) 0 8px, transparent 9px), radial-gradient(circle at 84px center, var(--color-lightgray) 0 8px, transparent 9px); background-size: 96px 24px; background-repeat: repeat-x; }
+    .footer { background: #080808; padding: 80px 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .footer__col h3 { color: var(--color-ceruleanblue); margin-bottom: 25px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+    .footer__tagline { margin: 20px 0; font-size: 0.95rem; color: #888; }
+    .footer__links { list-style: none; }
+    .footer__links li { margin-bottom: 12px; }
+    .footer__links a { text-decoration: none; color: var(--color-lightgray); font-size: 0.9rem; transition: color 0.2s; }
+    .footer__links a:hover { color: var(--color-coralred); }
+    .footer__social-min { display: flex; gap: 15px; font-size: 1.2rem; }
+    .footer__social-min a { color: var(--color-white); }
+    .footer__logo img { height: 4vh; width: auto; min-height: 40px; min-width: 100px; }
+    .footer__bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.8rem; color: #555; }
+
+    @media (max-width: 1024px) { .legal-sidebar { display: none; } .legal-main { padding: 60px 32px 80px; max-width: 100vw; } .contact-strip { flex-direction: column; align-items: flex-start; } }
+    @media (max-width: 768px) { .footer__grid { grid-template-columns: 1fr 1fr; } .header { padding: 16px 20px; } .header__nav-list { gap: 16px; } .data-table { font-size: 0.82rem; } }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="grotix__logo"><a href="../index.html"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></a></div>
+  <nav class="header__nav">
+    <ul class="header__nav-list">
+      <li><a href="../index.html#hero" class="header__nav-link" data-i18n="nav.hero">General</a></li>
+      <li><a href="../index.html#services" class="header__nav-link" data-i18n="nav.services">Services</a></li>
+      <li><a href="../index.html#app" class="header__nav-link" data-i18n="nav.app">App</a></li>
+      <li><a href="../index.html#us" class="header__nav-link" data-i18n="nav.about">Us</a></li>
+      <li><a href="../index.html#contact" class="header__nav-link" data-i18n="nav.contact">Contact</a></li>
+      <li><div class="cta"><a href="" data-i18n="hero.get">GET NOW!</a></div></li>
+    </ul>
+  </nav>
+  <div class="header__language-selector">
+    <button class="language-btn" data-lang="en" aria-pressed="true">EN</button>
+    <button class="language-btn" data-lang="es" aria-pressed="false">ES</button>
+  </div>
+</header>
+
+<div class="legal-wrap">
+  <!-- SIDEBAR -->
+  <aside class="legal-sidebar">
+    <a href="../index.html" class="sidebar-back"><i class="fas fa-arrow-left"></i> <span data-i18n="legal.back">Back to site</span></a>
+    <p class="sidebar-label" data-i18n="legal.toc">On this page</p>
+    <ul class="sidebar-nav">
+      <li><a href="#controller" data-i18n="privacy.s1.title">Data Controller</a></li>
+      <li><a href="#collected" data-i18n="privacy.s2.title">Data We Collect</a></li>
+      <li><a href="#purposes" data-i18n="privacy.s3.title">Purposes & Legal Basis</a></li>
+      <li><a href="#retention" data-i18n="privacy.s4.title">Data Retention</a></li>
+      <li><a href="#sharing" data-i18n="privacy.s5.title">Data Sharing</a></li>
+      <li><a href="#security" data-i18n="privacy.s6.title">Security</a></li>
+      <li><a href="#rights" data-i18n="privacy.s7.title">Your Rights</a></li>
+      <li><a href="#minors" data-i18n="privacy.s8.title">Minors</a></li>
+      <li><a href="#changes" data-i18n="privacy.s9.title">Policy Changes</a></li>
+      <li><a href="#contact" data-i18n="privacy.s10.title">Contact DPO</a></li>
+    </ul>
+    <div class="legal-links">
+      <a href="terms.html" class="legal-link-item"><i class="fas fa-file-alt"></i> <span data-i18n="footer.terms">Terms and Conditions</span></a>
+      <a href="cookies.html" class="legal-link-item"><i class="fas fa-cookie-bite"></i> <span data-i18n="footer.cookies">Cookies Policy</span></a>
+      <a href="complaints.html" class="legal-link-item"><i class="fas fa-book"></i> <span data-i18n="footer.complaints">Complaints Book</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="legal-main">
+    <div class="doc-meta">
+      <span class="doc-badge" data-i18n="footer.privacy">Privacy Policy</span>
+      <span class="doc-date" data-i18n="legal.updated">Last updated: January 1, 2026</span>
+    </div>
+    <h1 class="doc-title" data-i18n="privacy.title">Privacy Policy</h1>
+    <p class="doc-intro" data-i18n="privacy.intro">At Grotix, your privacy matters. This Policy explains what personal data we collect through our IoT hardware, mobile app, and web platform, how we use it, and the rights you have over it. We are committed to transparency and to complying with applicable data protection law.</p>
+
+    <!-- 01 -->
+    <div class="legal-section" id="controller">
+      <p class="section-num">01</p>
+      <h2 data-i18n="privacy.s1.title">Data Controller</h2>
+      <p data-i18n="privacy.s1.p1">The data controller responsible for your personal information is Celevi S.A.C., the company behind the Grotix platform, incorporated under the laws of Peru and headquartered in Lima.</p>
+      <div class="highlight-box">
+        <p data-i18n="privacy.s1.note">For all privacy-related inquiries, you may contact our Data Protection Officer at: <strong>privacy@grotix.io</strong></p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="legal-section" id="collected">
+      <p class="section-num">02</p>
+      <h2 data-i18n="privacy.s2.title">Data We Collect</h2>
+      <p data-i18n="privacy.s2.p1">We collect data in three ways: information you provide directly, data generated automatically by our hardware, and data collected through your use of the app and website.</p>
+
+      <table class="data-table">
+        <thead>
+        <tr>
+          <th data-i18n="privacy.table.category">Category</th>
+          <th data-i18n="privacy.table.examples">Examples</th>
+          <th data-i18n="privacy.table.source">Source</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td data-i18n="privacy.table.r1.cat">Account data</td>
+          <td data-i18n="privacy.table.r1.ex">Name, email address, password hash, preferred language</td>
+          <td data-i18n="privacy.table.r1.src">Provided by user</td>
+        </tr>
+        <tr>
+          <td data-i18n="privacy.table.r2.cat">Sensor telemetry</td>
+          <td data-i18n="privacy.table.r2.ex">Soil moisture, ambient temperature, relative humidity, sunlight levels, irrigation events</td>
+          <td data-i18n="privacy.table.r2.src">IoT hardware</td>
+        </tr>
+        <tr>
+          <td data-i18n="privacy.table.r3.cat">Crop data</td>
+          <td data-i18n="privacy.table.r3.ex">Crop type, phenological stage, manual configuration inputs</td>
+          <td data-i18n="privacy.table.r3.src">Hardware / user input</td>
+        </tr>
+        <tr>
+          <td data-i18n="privacy.table.r4.cat">Usage data</td>
+          <td data-i18n="privacy.table.r4.ex">App screens visited, feature interactions, session duration, error logs</td>
+          <td data-i18n="privacy.table.r4.src">App & web platform</td>
+        </tr>
+        <tr>
+          <td data-i18n="privacy.table.r5.cat">Device data</td>
+          <td data-i18n="privacy.table.r5.ex">Mobile OS version, device model, IP address, push token</td>
+          <td data-i18n="privacy.table.r5.src">App & web platform</td>
+        </tr>
+        <tr>
+          <td data-i18n="privacy.table.r6.cat">Communications</td>
+          <td data-i18n="privacy.table.r6.ex">Messages sent via contact form, support tickets</td>
+          <td data-i18n="privacy.table.r6.src">Provided by user</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <p data-i18n="privacy.s2.note">Camera images captured by the machine-vision module for crop identification are processed entirely on-device. No raw images are transmitted to our servers or shared with third parties.</p>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="legal-section" id="purposes">
+      <p class="section-num">03</p>
+      <h2 data-i18n="privacy.s3.title">Purposes &amp; Legal Basis</h2>
+      <p data-i18n="privacy.s3.p1">We process your data only for specific, legitimate purposes and always on a recognized legal basis under applicable data protection law.</p>
+      <ul>
+        <li data-i18n="privacy.s3.l1"><strong>Service delivery</strong> — to operate the irrigation platform, synchronize sensor data, and provide real-time telemetry (contractual necessity).</li>
+        <li data-i18n="privacy.s3.l2"><strong>Account management</strong> — to authenticate users, manage roles, and secure access (contractual necessity).</li>
+        <li data-i18n="privacy.s3.l3"><strong>AI model improvement</strong> — to refine irrigation algorithms and crop identification using anonymized, aggregated data (legitimate interest).</li>
+        <li data-i18n="privacy.s3.l4"><strong>Push notifications &amp; alerts</strong> — to inform you of sensor threshold events and irrigation activity (consent / contractual necessity).</li>
+        <li data-i18n="privacy.s3.l5"><strong>Customer support</strong> — to respond to inquiries and resolve technical issues (legitimate interest).</li>
+        <li data-i18n="privacy.s3.l6"><strong>Legal compliance</strong> — to comply with Peruvian data protection regulations and any applicable court orders (legal obligation).</li>
+      </ul>
+      <p data-i18n="privacy.s3.p2">We do not sell your personal data to third parties, and we do not use it for advertising profiling.</p>
+    </div>
+
+    <!-- 04 -->
+    <div class="legal-section" id="retention">
+      <p class="section-num">04</p>
+      <h2 data-i18n="privacy.s4.title">Data Retention</h2>
+      <p data-i18n="privacy.s4.p1">We retain your data only for as long as necessary to fulfil the purposes described in this Policy, or as required by law.</p>
+      <ul>
+        <li data-i18n="privacy.s4.l1">Account data is retained for the duration of your active account and deleted within 30 days of account closure upon request.</li>
+        <li data-i18n="privacy.s4.l2">Sensor telemetry is retained for up to 24 months to support historical trend analysis and water-saving reports.</li>
+        <li data-i18n="privacy.s4.l3">Anonymized, aggregated data derived from telemetry may be retained indefinitely for AI model training purposes.</li>
+        <li data-i18n="privacy.s4.l4">Support communications are retained for 12 months after ticket resolution.</li>
+      </ul>
+    </div>
+
+    <!-- 05 -->
+    <div class="legal-section" id="sharing">
+      <p class="section-num">05</p>
+      <h2 data-i18n="privacy.s5.title">Data Sharing</h2>
+      <p data-i18n="privacy.s5.p1">We do not sell, rent, or trade your personal data. We may share it only in the following limited circumstances:</p>
+      <ul>
+        <li data-i18n="privacy.s5.l1"><strong>Service providers</strong> — cloud infrastructure partners (e.g., hosting, database) who process data strictly on our behalf under data processing agreements.</li>
+        <li data-i18n="privacy.s5.l2"><strong>Analytics providers</strong> — anonymized, aggregated usage metrics to improve the platform. No personally identifiable information is shared.</li>
+        <li data-i18n="privacy.s5.l3"><strong>Legal requirements</strong> — when required by a valid court order, subpoena, or applicable law, we will disclose the minimum data necessary.</li>
+        <li data-i18n="privacy.s5.l4"><strong>Business transfers</strong> — in the event of a merger or acquisition, your data may be transferred to the successor entity, who will be bound by this Policy.</li>
+      </ul>
+    </div>
+
+    <!-- 06 -->
+    <div class="legal-section" id="security">
+      <p class="section-num">06</p>
+      <h2 data-i18n="privacy.s6.title">Security</h2>
+      <p data-i18n="privacy.s6.p1">We implement industry-standard technical and organizational measures to protect your data against unauthorized access, loss, or disclosure. These measures include:</p>
+      <ul>
+        <li data-i18n="privacy.s6.l1">TLS encryption for all data in transit between the hardware, app, and our servers.</li>
+        <li data-i18n="privacy.s6.l2">JWT-based authentication and role-based access control (RBAC) for the platform.</li>
+        <li data-i18n="privacy.s6.l3">AES-256 encryption for sensitive data at rest.</li>
+        <li data-i18n="privacy.s6.l4">Regular security audits and vulnerability assessments.</li>
+      </ul>
+      <p data-i18n="privacy.s6.p2">Despite these measures, no system is completely secure. If you believe your account has been compromised, please contact us immediately at privacy@grotix.io.</p>
+    </div>
+
+    <!-- 07 -->
+    <div class="legal-section" id="rights">
+      <p class="section-num">07</p>
+      <h2 data-i18n="privacy.s7.title">Your Rights</h2>
+      <p data-i18n="privacy.s7.p1">Depending on your jurisdiction, you may have the following rights regarding your personal data. You can exercise most of these directly from your account settings panel, or by contacting us at privacy@grotix.io.</p>
+      <ul>
+        <li data-i18n="privacy.s7.l1"><strong>Access</strong> — request a copy of the personal data we hold about you.</li>
+        <li data-i18n="privacy.s7.l2"><strong>Rectification</strong> — ask us to correct inaccurate or incomplete data.</li>
+        <li data-i18n="privacy.s7.l3"><strong>Erasure</strong> — request deletion of your personal data, subject to legal retention obligations.</li>
+        <li data-i18n="privacy.s7.l4"><strong>Portability</strong> — receive your data in a structured, machine-readable format.</li>
+        <li data-i18n="privacy.s7.l5"><strong>Restriction</strong> — ask us to limit how we process your data in certain circumstances.</li>
+        <li data-i18n="privacy.s7.l6"><strong>Objection</strong> — object to processing based on legitimate interest, including for AI model improvement.</li>
+        <li data-i18n="privacy.s7.l7"><strong>Withdraw consent</strong> — where processing is based on consent, you may withdraw it at any time without affecting prior processing.</li>
+      </ul>
+      <p data-i18n="privacy.s7.p2">We will respond to all valid requests within 30 days. If you are unsatisfied with our response, you have the right to lodge a complaint with the relevant supervisory authority in Peru (ANPD – Autoridad Nacional de Protección de Datos Personales).</p>
+    </div>
+
+    <!-- 08 -->
+    <div class="legal-section" id="minors">
+      <p class="section-num">08</p>
+      <h2 data-i18n="privacy.s8.title">Minors</h2>
+      <p data-i18n="privacy.s8.p1">The Grotix platform is intended for users aged 18 and over. We do not knowingly collect personal data from minors. If you believe a minor has provided us with personal data, please contact us and we will promptly delete the relevant information.</p>
+    </div>
+
+    <!-- 09 -->
+    <div class="legal-section" id="changes">
+      <p class="section-num">09</p>
+      <h2 data-i18n="privacy.s9.title">Policy Changes</h2>
+      <p data-i18n="privacy.s9.p1">We may update this Privacy Policy periodically. When we make material changes, we will notify you via email or an in-app notification at least 15 days before the changes take effect. The updated policy will always be available on this page with a revised "Last updated" date.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="legal-section" id="contact">
+      <p class="section-num">10</p>
+      <h2 data-i18n="privacy.s10.title">Contact Our Data Protection Officer</h2>
+      <p data-i18n="privacy.s10.p1">If you have questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please reach out to our Data Protection Officer:</p>
+      <div class="highlight-box">
+        <p data-i18n="privacy.s10.note">Email: <strong>privacy@grotix.io</strong> — We aim to respond within 5 business days. For complex or rights-related requests, our maximum response time is 30 calendar days.</p>
+      </div>
+    </div>
+
+    <div class="contact-strip">
+      <div>
+        <h3 data-i18n="legal.contact.title">Questions about your data?</h3>
+        <p data-i18n="privacy.contact.desc">Our Data Protection Officer is ready to help.</p>
+      </div>
+      <a href="../index.html#contact" class="btn-solid" data-i18n="nav.contact">Contact Us</a>
+    </div>
+  </main>
+</div>
+
+<div class="color-separator"></div>
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__logo"><img src="assets/images/logo/b&w.png" alt="Grotix Logo"></div>
+        <p class="footer__tagline" data-i18n="footer.tagline">AI-Driven Precision Irrigation for Smarter Farming.</p>
+        <div class="footer__social-min">
+          <a target="_blank" href="https://www.instagram.com/grotix.by.celevi?igsh=ejJkMmw1bHF6cGll"><i class="fab fa-instagram"></i></a>
+          <a target="_blank" href="https://www.facebook.com/profile.php?id=61589334366136"><i class="fab fa-facebook"></i></a>
+          <a target="_blank" href="https://x.com/grotix99540"><i class="fab fa-twitter"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/grotix-by-celevi-982a4a408/"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.nav.title">Navigation</h3>
+        <ul class="footer__links">
+          <li><a href="../index.html#hero" data-i18n="nav.hero">General</a></li>
+          <li><a href="../index.html#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="../index.html#app" data-i18n="nav.app">App</a></li>
+          <li><a href="../index.html#us" data-i18n="nav.about">Us</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.legal.title">Legal</h3>
+        <ul class="footer__links">
+          <li><a href="terms.html" data-i18n="footer.terms">Terms and Conditions</a></li>
+          <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="cookies.html" data-i18n="footer.cookies">Cookies Policy</a></li>
+          <li><a href="complaints.html" data-i18n="footer.complaints">Complaints Book</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3 data-i18n="footer.support.title">Support</h3>
+        <ul class="footer__links">
+          <li><a href="help.html" data-i18n="footer.help">Help</a></li>
+          <li><a href="faq.html" data-i18n="footer.faq">Frequent Questions</a></li>
+          <li><a href="../index.html#contact" data-i18n="nav.contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom"><p data-i18n="footer.chvr">© 2026 Grotix - Celevi. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script>
+  const i18n = {
+    en: {
+      "nav.hero":"General","nav.services":"Services","nav.app":"App","nav.about":"Us","nav.contact":"Contact","hero.get":"GET NOW!",
+      "footer.tagline":"AI-Driven Precision Irrigation for Smarter Farming.","footer.nav.title":"Navigation","footer.legal.title":"Legal","footer.support.title":"Support",
+      "footer.terms":"Terms and Conditions","footer.privacy":"Privacy Policy","footer.cookies":"Cookies Policy","footer.complaints":"Complaints Book",
+      "footer.help":"Help","footer.faq":"Frequent Questions","footer.chvr":"© 2026 Grotix - Celevi. All rights reserved.",
+      "legal.back":"Back to site","legal.toc":"On this page","legal.updated":"Last updated: January 1, 2026",
+      "legal.contact.title":"Questions about your data?",
+      "privacy.contact.desc":"Our Data Protection Officer is ready to help.",
+      "privacy.title":"Privacy Policy",
+      "privacy.intro":"At Grotix, your privacy matters. This Policy explains what personal data we collect through our IoT hardware, mobile app, and web platform, how we use it, and the rights you have over it. We are committed to transparency and to complying with applicable data protection law.",
+      "privacy.s1.title":"Data Controller","privacy.s1.p1":"The data controller responsible for your personal information is Celevi S.A.C., the company behind the Grotix platform, incorporated under the laws of Peru and headquartered in Lima.","privacy.s1.note":"For all privacy-related inquiries, you may contact our Data Protection Officer at: privacy@grotix.io",
+      "privacy.s2.title":"Data We Collect","privacy.s2.p1":"We collect data in three ways: information you provide directly, data generated automatically by our hardware, and data collected through your use of the app and website.","privacy.s2.note":"Camera images captured by the machine-vision module for crop identification are processed entirely on-device. No raw images are transmitted to our servers or shared with third parties.",
+      "privacy.table.category":"Category","privacy.table.examples":"Examples","privacy.table.source":"Source",
+      "privacy.table.r1.cat":"Account data","privacy.table.r1.ex":"Name, email address, password hash, preferred language","privacy.table.r1.src":"Provided by user",
+      "privacy.table.r2.cat":"Sensor telemetry","privacy.table.r2.ex":"Soil moisture, ambient temperature, relative humidity, sunlight levels, irrigation events","privacy.table.r2.src":"IoT hardware",
+      "privacy.table.r3.cat":"Crop data","privacy.table.r3.ex":"Crop type, phenological stage, manual configuration inputs","privacy.table.r3.src":"Hardware / user input",
+      "privacy.table.r4.cat":"Usage data","privacy.table.r4.ex":"App screens visited, feature interactions, session duration, error logs","privacy.table.r4.src":"App & web platform",
+      "privacy.table.r5.cat":"Device data","privacy.table.r5.ex":"Mobile OS version, device model, IP address, push token","privacy.table.r5.src":"App & web platform",
+      "privacy.table.r6.cat":"Communications","privacy.table.r6.ex":"Messages sent via contact form, support tickets","privacy.table.r6.src":"Provided by user",
+      "privacy.s3.title":"Purposes & Legal Basis","privacy.s3.p1":"We process your data only for specific, legitimate purposes and always on a recognized legal basis under applicable data protection law.","privacy.s3.l1":"Service delivery — to operate the irrigation platform, synchronize sensor data, and provide real-time telemetry (contractual necessity).","privacy.s3.l2":"Account management — to authenticate users, manage roles, and secure access (contractual necessity).","privacy.s3.l3":"AI model improvement — to refine irrigation algorithms and crop identification using anonymized, aggregated data (legitimate interest).","privacy.s3.l4":"Push notifications & alerts — to inform you of sensor threshold events and irrigation activity (consent / contractual necessity).","privacy.s3.l5":"Customer support — to respond to inquiries and resolve technical issues (legitimate interest).","privacy.s3.l6":"Legal compliance — to comply with Peruvian data protection regulations and any applicable court orders (legal obligation).","privacy.s3.p2":"We do not sell your personal data to third parties, and we do not use it for advertising profiling.",
+      "privacy.s4.title":"Data Retention","privacy.s4.p1":"We retain your data only for as long as necessary to fulfil the purposes described in this Policy, or as required by law.","privacy.s4.l1":"Account data is retained for the duration of your active account and deleted within 30 days of account closure upon request.","privacy.s4.l2":"Sensor telemetry is retained for up to 24 months to support historical trend analysis and water-saving reports.","privacy.s4.l3":"Anonymized, aggregated data derived from telemetry may be retained indefinitely for AI model training purposes.","privacy.s4.l4":"Support communications are retained for 12 months after ticket resolution.",
+      "privacy.s5.title":"Data Sharing","privacy.s5.p1":"We do not sell, rent, or trade your personal data. We may share it only in the following limited circumstances:","privacy.s5.l1":"Service providers — cloud infrastructure partners (e.g., hosting, database) who process data strictly on our behalf under data processing agreements.","privacy.s5.l2":"Analytics providers — anonymized, aggregated usage metrics to improve the platform. No personally identifiable information is shared.","privacy.s5.l3":"Legal requirements — when required by a valid court order, subpoena, or applicable law, we will disclose the minimum data necessary.","privacy.s5.l4":"Business transfers — in the event of a merger or acquisition, your data may be transferred to the successor entity, who will be bound by this Policy.",
+      "privacy.s6.title":"Security","privacy.s6.p1":"We implement industry-standard technical and organizational measures to protect your data against unauthorized access, loss, or disclosure. These measures include:","privacy.s6.l1":"TLS encryption for all data in transit between the hardware, app, and our servers.","privacy.s6.l2":"JWT-based authentication and role-based access control (RBAC) for the platform.","privacy.s6.l3":"AES-256 encryption for sensitive data at rest.","privacy.s6.l4":"Regular security audits and vulnerability assessments.","privacy.s6.p2":"Despite these measures, no system is completely secure. If you believe your account has been compromised, please contact us immediately at privacy@grotix.io.",
+      "privacy.s7.title":"Your Rights","privacy.s7.p1":"Depending on your jurisdiction, you may have the following rights regarding your personal data. You can exercise most of these directly from your account settings panel, or by contacting us at privacy@grotix.io.","privacy.s7.l1":"Access — request a copy of the personal data we hold about you.","privacy.s7.l2":"Rectification — ask us to correct inaccurate or incomplete data.","privacy.s7.l3":"Erasure — request deletion of your personal data, subject to legal retention obligations.","privacy.s7.l4":"Portability — receive your data in a structured, machine-readable format.","privacy.s7.l5":"Restriction — ask us to limit how we process your data in certain circumstances.","privacy.s7.l6":"Objection — object to processing based on legitimate interest, including for AI model improvement.","privacy.s7.l7":"Withdraw consent — where processing is based on consent, you may withdraw it at any time without affecting prior processing.","privacy.s7.p2":"We will respond to all valid requests within 30 days. If you are unsatisfied with our response, you have the right to lodge a complaint with the relevant supervisory authority in Peru (ANPD – Autoridad Nacional de Protección de Datos Personales).",
+      "privacy.s8.title":"Minors","privacy.s8.p1":"The Grotix platform is intended for users aged 18 and over. We do not knowingly collect personal data from minors. If you believe a minor has provided us with personal data, please contact us and we will promptly delete the relevant information.",
+      "privacy.s9.title":"Policy Changes","privacy.s9.p1":"We may update this Privacy Policy periodically. When we make material changes, we will notify you via email or an in-app notification at least 15 days before the changes take effect. The updated policy will always be available on this page with a revised \"Last updated\" date.",
+      "privacy.s10.title":"Contact Our Data Protection Officer","privacy.s10.p1":"If you have questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please reach out to our Data Protection Officer:","privacy.s10.note":"Email: privacy@grotix.io — We aim to respond within 5 business days. For complex or rights-related requests, our maximum response time is 30 calendar days."
+    },
+    es: {
+      "nav.hero":"General","nav.services":"Servicios","nav.app":"App","nav.about":"Nosotros","nav.contact":"Contacto","hero.get":"¡OBTENER AHORA!",
+      "footer.tagline":"Irrigación de precisión con IA para una agricultura inteligente.","footer.nav.title":"Navegación","footer.legal.title":"Legal","footer.support.title":"Soporte",
+      "footer.terms":"Términos y Condiciones","footer.privacy":"Política de Privacidad","footer.cookies":"Política de Cookies","footer.complaints":"Libro de Reclamaciones",
+      "footer.help":"Ayuda","footer.faq":"Preguntas Frecuentes","footer.chvr":"© 2026 Grotix - Celevi. Todos los derechos reservados.",
+      "legal.back":"Volver al sitio","legal.toc":"En esta página","legal.updated":"Última actualización: 1 de enero de 2026",
+      "legal.contact.title":"¿Preguntas sobre tus datos?",
+      "privacy.contact.desc":"Nuestro Delegado de Protección de Datos está listo para ayudarte.",
+      "privacy.title":"Política de Privacidad",
+      "privacy.intro":"En Grotix, tu privacidad es importante. Esta Política explica qué datos personales recopilamos a través de nuestro hardware IoT, aplicación móvil y plataforma web, cómo los utilizamos y los derechos que tienes sobre ellos. Estamos comprometidos con la transparencia y el cumplimiento de la legislación de protección de datos aplicable.",
+      "privacy.s1.title":"Responsable del Tratamiento","privacy.s1.p1":"El responsable del tratamiento de tus datos personales es Celevi S.A.C., la empresa detrás de la plataforma Grotix, constituida bajo las leyes de Perú y con sede en Lima.","privacy.s1.note":"Para todas las consultas relacionadas con privacidad, puedes contactar a nuestro Delegado de Protección de Datos en: privacy@grotix.io",
+      "privacy.s2.title":"Datos que Recopilamos","privacy.s2.p1":"Recopilamos datos de tres formas: información que proporcionas directamente, datos generados automáticamente por nuestro hardware y datos recopilados a través del uso de la app y el sitio web.","privacy.s2.note":"Las imágenes capturadas por el módulo de visión por máquina para la identificación de cultivos se procesan íntegramente en el dispositivo. Ninguna imagen sin procesar se transmite a nuestros servidores ni se comparte con terceros.",
+      "privacy.table.category":"Categoría","privacy.table.examples":"Ejemplos","privacy.table.source":"Origen",
+      "privacy.table.r1.cat":"Datos de cuenta","privacy.table.r1.ex":"Nombre, correo electrónico, hash de contraseña, idioma preferido","privacy.table.r1.src":"Proporcionado por el usuario",
+      "privacy.table.r2.cat":"Telemetría de sensores","privacy.table.r2.ex":"Humedad del suelo, temperatura ambiental, humedad relativa, niveles de luz solar, eventos de irrigación","privacy.table.r2.src":"Hardware IoT",
+      "privacy.table.r3.cat":"Datos de cultivos","privacy.table.r3.ex":"Tipo de cultivo, etapa fenológica, configuración manual","privacy.table.r3.src":"Hardware / entrada del usuario",
+      "privacy.table.r4.cat":"Datos de uso","privacy.table.r4.ex":"Pantallas visitadas, interacciones con funciones, duración de sesión, registros de errores","privacy.table.r4.src":"App y plataforma web",
+      "privacy.table.r5.cat":"Datos del dispositivo","privacy.table.r5.ex":"Versión del SO, modelo del dispositivo, dirección IP, token de notificaciones","privacy.table.r5.src":"App y plataforma web",
+      "privacy.table.r6.cat":"Comunicaciones","privacy.table.r6.ex":"Mensajes enviados mediante el formulario de contacto, tickets de soporte","privacy.table.r6.src":"Proporcionado por el usuario",
+      "privacy.s3.title":"Finalidades y Base Legal","privacy.s3.p1":"Procesamos tus datos únicamente para finalidades específicas y legítimas, y siempre con una base legal reconocida por la legislación de protección de datos aplicable.","privacy.s3.l1":"Prestación del servicio — operar la plataforma de irrigación, sincronizar datos de sensores y proporcionar telemetría en tiempo real (necesidad contractual).","privacy.s3.l2":"Gestión de cuentas — autenticar usuarios, gestionar roles y proteger el acceso (necesidad contractual).","privacy.s3.l3":"Mejora de modelos de IA — perfeccionar algoritmos de irrigación e identificación de cultivos mediante datos anonimizados y agregados (interés legítimo).","privacy.s3.l4":"Notificaciones push y alertas — informarte sobre eventos de umbral de sensores y actividad de irrigación (consentimiento / necesidad contractual).","privacy.s3.l5":"Atención al cliente — responder a consultas y resolver problemas técnicos (interés legítimo).","privacy.s3.l6":"Cumplimiento legal — cumplir con la normativa peruana de protección de datos y cualquier orden judicial aplicable (obligación legal).","privacy.s3.p2":"No vendemos tus datos personales a terceros ni los utilizamos para perfiles publicitarios.",
+      "privacy.s4.title":"Conservación de Datos","privacy.s4.p1":"Conservamos tus datos únicamente durante el tiempo necesario para cumplir con las finalidades descritas en esta Política o según lo exija la ley.","privacy.s4.l1":"Los datos de cuenta se conservan durante la vigencia de la cuenta activa y se eliminan en un plazo de 30 días tras el cierre de la cuenta a petición del usuario.","privacy.s4.l2":"La telemetría de sensores se conserva hasta 24 meses para el análisis de tendencias históricas e informes de ahorro de agua.","privacy.s4.l3":"Los datos anonimizados y agregados derivados de la telemetría pueden conservarse indefinidamente para el entrenamiento de modelos de IA.","privacy.s4.l4":"Las comunicaciones de soporte se conservan durante 12 meses tras la resolución del ticket.",
+      "privacy.s5.title":"Compartición de Datos","privacy.s5.p1":"No vendemos, alquilamos ni cedemos tus datos personales. Solo podemos compartirlos en las siguientes circunstancias limitadas:","privacy.s5.l1":"Proveedores de servicios — socios de infraestructura en la nube (p. ej., alojamiento, base de datos) que procesan los datos estrictamente en nuestro nombre bajo acuerdos de tratamiento de datos.","privacy.s5.l2":"Proveedores de analítica — métricas de uso anonimizadas y agregadas para mejorar la plataforma. No se comparte ninguna información de identificación personal.","privacy.s5.l3":"Requisitos legales — cuando lo exija una orden judicial válida, una citación o la legislación aplicable, divulgaremos el mínimo de datos necesario.","privacy.s5.l4":"Transmisiones empresariales — en caso de fusión o adquisición, tus datos pueden transferirse a la entidad sucesora, que quedará vinculada por esta Política.",
+      "privacy.s6.title":"Seguridad","privacy.s6.p1":"Implementamos medidas técnicas y organizativas estándar del sector para proteger tus datos contra el acceso no autorizado, la pérdida o la divulgación. Estas medidas incluyen:","privacy.s6.l1":"Cifrado TLS para todos los datos en tránsito entre el hardware, la app y nuestros servidores.","privacy.s6.l2":"Autenticación basada en JWT y control de acceso por roles (RBAC) para la plataforma.","privacy.s6.l3":"Cifrado AES-256 para datos sensibles en reposo.","privacy.s6.l4":"Auditorías de seguridad y evaluaciones de vulnerabilidad periódicas.","privacy.s6.p2":"A pesar de estas medidas, ningún sistema es completamente seguro. Si crees que tu cuenta ha sido comprometida, contáctanos de inmediato en privacy@grotix.io.",
+      "privacy.s7.title":"Tus Derechos","privacy.s7.p1":"Dependiendo de tu jurisdicción, puedes tener los siguientes derechos sobre tus datos personales. Puedes ejercer la mayoría de ellos directamente desde el panel de configuración de tu cuenta o contactándonos en privacy@grotix.io.","privacy.s7.l1":"Acceso — solicitar una copia de los datos personales que conservamos sobre ti.","privacy.s7.l2":"Rectificación — pedirnos que corrijamos datos inexactos o incompletos.","privacy.s7.l3":"Supresión — solicitar la eliminación de tus datos personales, sujeto a las obligaciones legales de conservación.","privacy.s7.l4":"Portabilidad — recibir tus datos en un formato estructurado y legible por máquina.","privacy.s7.l5":"Limitación — pedirnos que limitemos el tratamiento de tus datos en determinadas circunstancias.","privacy.s7.l6":"Oposición — oponerte al tratamiento basado en interés legítimo, incluido el relacionado con la mejora de modelos de IA.","privacy.s7.l7":"Retirar el consentimiento — cuando el tratamiento se base en el consentimiento, puedes retirarlo en cualquier momento sin que ello afecte al tratamiento previo.","privacy.s7.p2":"Responderemos a todas las solicitudes válidas en un plazo de 30 días. Si no estás satisfecho con nuestra respuesta, tienes derecho a presentar una reclamación ante la autoridad de supervisión competente en Perú (ANPD – Autoridad Nacional de Protección de Datos Personales).",
+      "privacy.s8.title":"Menores","privacy.s8.p1":"La plataforma Grotix está destinada a usuarios mayores de 18 años. No recopilamos intencionadamente datos personales de menores. Si crees que un menor nos ha proporcionado datos personales, contáctanos y eliminaremos la información pertinente de inmediato.",
+      "privacy.s9.title":"Cambios en la Política","privacy.s9.p1":"Podemos actualizar esta Política de Privacidad periódicamente. Cuando realicemos cambios sustanciales, te notificaremos por correo electrónico o mediante una notificación en la app con al menos 15 días de antelación. La política actualizada siempre estará disponible en esta página con la fecha de «Última actualización» revisada.",
+      "privacy.s10.title":"Contacta con Nuestro Delegado de Protección de Datos","privacy.s10.p1":"Si tienes preguntas, dudas o solicitudes sobre esta Política de Privacidad o sobre cómo gestionamos tus datos, contacta con nuestro Delegado de Protección de Datos:","privacy.s10.note":"Correo electrónico: privacy@grotix.io — Nos comprometemos a responder en un plazo de 5 días hábiles. Para solicitudes complejas o relacionadas con derechos, el plazo máximo de respuesta es de 30 días naturales."
+    }
+  };
+
+  let currentLanguage = 'en';
+  const translatePage = (lang) => {
+    document.querySelectorAll('.language-btn').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false'));
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (i18n[lang]?.[k]) el.textContent = i18n[lang][k];
+    });
+    localStorage.setItem('grotix-language', lang);
+    currentLanguage = lang;
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('grotix-language');
+    translatePage(saved || (navigator.language.startsWith('es') ? 'es' : 'en'));
+    document.querySelectorAll('.language-btn').forEach(b => b.addEventListener('click', () => translatePage(b.dataset.lang)));
+
+    // Sidebar active on scroll
+    const sections = document.querySelectorAll('.legal-section');
+    const links = document.querySelectorAll('.sidebar-nav a');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(s => obs.observe(s));
+  });
+</script>
+</body>
+</html>
