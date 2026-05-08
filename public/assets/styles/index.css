@@ -229,14 +229,72 @@ body {
 }
 
 .hero__lower {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top: 40px;
+    padding-bottom: 80px;
+    overflow: hidden;
 }
 
-.hero__lower-img {
-    width: 20%;
+.hero__lower::before,
+.hero__lower::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
 }
+.hero__lower::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-black), transparent);
+}
+.hero__lower::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-black), transparent);
+}
+
+.carousel {
+    display: flex;
+    width: 100%;
+}
+
+.carousel__track {
+    display: flex;
+    gap: 20px;
+    animation: scrollInfinite 60s linear infinite;
+    padding: 20px 0;
+}
+
+.carousel__track img {
+    width: 350px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.carousel__track img:hover {
+    transform: scale(1.05);
+}
+
+/* Animación de desplazamiento */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-350px * 8 - 20px * 8));
+    }
+}
+
+/* Pausar al pasar el mouse para que el usuario pueda ver una imagen fija */
+.carousel:hover .carousel__track {
+    animation-play-state: paused;
+}
+
 
 /** Services Section **/
 .services {
@@ -862,4 +920,30 @@ body {
     .footer__grid {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+.color-separator {
+    width: 100%;
+    height: 24px;
+    margin: 10px 0;
+
+    background-image:
+            radial-gradient(circle at 12px center,
+            var(--color-grassgreen) 0 8px,
+            transparent 9px),
+
+            radial-gradient(circle at 36px center,
+            var(--color-ceruleanblue) 0 8px,
+            transparent 9px),
+
+            radial-gradient(circle at 60px center,
+            var(--color-coralred) 0 8px,
+            transparent 9px),
+
+            radial-gradient(circle at 84px center,
+            var(--color-lightgray) 0 8px,
+            transparent 9px);
+
+    background-size: 96px 24px;
+    background-repeat: repeat-x;
 }
