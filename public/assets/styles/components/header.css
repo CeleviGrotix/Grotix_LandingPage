@@ -101,6 +101,7 @@
     opacity: 0.6;
     font-family: var(--font-unique);
     font-size: 1rem;
+    color: var(--color-white);
 }
 
 .language-btn[aria-pressed="true"] {
