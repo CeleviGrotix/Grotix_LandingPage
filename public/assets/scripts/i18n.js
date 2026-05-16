@@ -284,4 +284,7 @@ const i18n = {
         "faq.contact.title": "¿No encontraste tu respuesta?",
         "faq.contact.desc": "Comunícate con nuestro equipo y te responderemos a la brevedad posible.",
     }
-}
+};
+
+// Expuesto para páginas legales que extienden traducciones (p. ej. i18n-complaints.js) y para translatePage en index.js
+window.i18n = i18n

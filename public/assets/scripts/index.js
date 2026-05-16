@@ -9,7 +9,17 @@
 // ---------------------
 let currentLanguage = 'en';
 
+const getI18nPack = () => {
+    if (typeof window !== 'undefined' && window.i18n) return window.i18n
+    if (typeof i18n !== 'undefined') return i18n
+    return null
+}
+
 const translatePage = (lang) => {
+    const pack = getI18nPack()
+    const dict = pack && pack[lang] ? pack[lang] : null
+    if (!dict) return
+
     // Actualizar estado de los botones
     document.querySelectorAll('.language-btn').forEach(btn => {
         btn.setAttribute('aria-pressed', btn.dataset.lang === lang);
@@ -17,25 +27,36 @@ const translatePage = (lang) => {
 
     document.documentElement.lang = lang;
 
-    // Traducir elementos con data-i18n
+    // Título de pestaña (páginas legales): <html data-page-title-i18n="complaints.documentTitle">
+    const titleKey = document.documentElement.getAttribute('data-page-title-i18n');
+    if (titleKey && dict[titleKey]) {
+        document.title = dict[titleKey];
+    }
+
+    // Traducir elementos con data-i18n (texto plano o HTML si llevan data-i18n-html)
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (typeof i18n !== 'undefined' && i18n[lang] && i18n[lang][key]) {
-            element.textContent = i18n[lang][key];
+        if (!dict[key]) return;
+        if (element.hasAttribute('data-i18n-html')) {
+            element.innerHTML = dict[key];
+        } else {
+            element.textContent = dict[key];
         }
     });
 
     // Traducir placeholders
     document.querySelectorAll('[data-placeholder-i18n]').forEach(element => {
         const key = element.getAttribute('data-placeholder-i18n');
-        if (typeof i18n !== 'undefined' && i18n[lang] && i18n[lang][key]) {
-            element.setAttribute('placeholder', i18n[lang][key]);
+        if (dict[key]) {
+            element.setAttribute('placeholder', dict[key]);
         }
     });
 
     localStorage.setItem('grotix-language', lang);
     currentLanguage = lang;
 };
+
+window.translatePage = translatePage;
 
 // ---------------------
 // 2. DOM CONTENT LOADED
@@ -84,43 +105,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const nav = document.querySelector('.header__nav');
 
-    // Crea el overlay dinámicamente
-    const overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    document.body.appendChild(overlay);
+    if (hamburger && nav) {
+        // Crea el overlay dinámicamente
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
 
-    const openMenu = () => {
-        hamburger.classList.add('open');
-        nav.classList.add('open');
-        overlay.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    };
+        const openMenu = () => {
+            hamburger.classList.add('open');
+            nav.classList.add('open');
+            overlay.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        };
 
-    const closeMenu = () => {
-        hamburger.classList.remove('open');
-        nav.classList.remove('open');
-        overlay.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    };
+        const closeMenu = () => {
+            hamburger.classList.remove('open');
+            nav.classList.remove('open');
+            overlay.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        };
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.contains('open') ? closeMenu() : openMenu();
-    });
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.contains('open') ? closeMenu() : openMenu();
+        });
 
-    // Cierra al hacer click en overlay
-    overlay.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
 
-    // Cierra al hacer click en un link del nav
-    document.querySelectorAll('.header__nav-link').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
+        document.querySelectorAll('.header__nav-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
-    // Cierra al presionar Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
+        });
+    }
 
     // --- ACTIVE NAV LINK (OBSERVER) ---
     const sections = document.querySelectorAll('section[id]');
@@ -180,7 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const t = (typeof i18n !== 'undefined') ? i18n[currentLanguage] : {};
+            const pack = getI18nPack();
+            const t = pack && pack[currentLanguage] ? pack[currentLanguage] : {};
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             const name    = contactForm.name.value.trim();
