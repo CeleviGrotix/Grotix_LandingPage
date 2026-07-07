@@ -141,6 +141,9 @@ const i18n = {
         "faq.b2.a": "We offer a 30-day satisfaction guarantee on hardware. If your device has a manufacturing defect or you are not satisfied within the first 30 days, contact us and we will arrange a return or replacement.",
         "faq.contact.title": "Didn't find your answer?",
         "faq.contact.desc": "Reach out to our team and we'll get back to you as soon as possible.",
+        "video": {
+            "title": "Experience Grotix in Action"
+        }
     },
     // Spanish
     es: {
@@ -283,6 +286,9 @@ const i18n = {
         "faq.b2.a": "Ofrecemos una garantía de satisfacción de 30 días sobre el hardware. Si tu dispositivo presenta un defecto de fabricación o no estás satisfecho dentro de los primeros 30 días, contáctanos y gestionaremos la devolución o el reemplazo.",
         "faq.contact.title": "¿No encontraste tu respuesta?",
         "faq.contact.desc": "Comunícate con nuestro equipo y te responderemos a la brevedad posible.",
+        "video": {
+            "title": "Conoce Grotix en Acción"
+        }
     }
 };
 
